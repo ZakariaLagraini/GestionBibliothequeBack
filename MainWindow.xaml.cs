@@ -24,5 +24,28 @@ namespace GestionBiblio
         {
             InitializeComponent();
         }
+
+         private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new Dashboard());
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new Livres());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new Dashboard());
+        }
     }
 }
