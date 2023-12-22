@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -22,9 +24,178 @@ namespace GestionBiblio
     public partial class Dashboard : UserControl
     {
 
+        private const string ConnectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=dotnet;"; 
+
         public Dashboard()
         {
             InitializeComponent();
+            UpdateAdherentCount();
+            UpdateLivresCount();
+            UpdateLivresResCount();
+            UpdateEmployeCount();
+        }
+
+        private void UpdateAdherentCount()
+        {
+            int adherentCount = GetAdherentCount();
+            AdherentCountTextBlock.Text = adherentCount.ToString();
+        }
+
+        private int GetAdherentCount()
+        {
+            int count = 0;
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    
+                    string query = "SELECT COUNT(*) FROM adherents";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int parsedCount))
+                        {
+                            count = parsedCount;
+                        }
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return count;
+        }
+
+       
+
+      
+        private void UpdateLivresCount()
+        {
+            int adherentCount = GetLivresCount();
+            LivresCountedTextBlock.Text = adherentCount.ToString();
+        }
+
+        private int GetLivresCount()
+        {
+            int count = 0;
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string query = "SELECT COUNT(*) FROM livres where state=1";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int parsedCount))
+                        {
+                            count = parsedCount;
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return count;
+        }
+
+        private void UpdateEmployeCount()
+        {
+            int adherentCount = GetEmployeCount();
+            EmployeCountTextBlock.Text = adherentCount.ToString();
+        }
+
+        private int GetEmployeCount()
+        {
+            int count = 0;
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string query = "SELECT COUNT(*) FROM employe";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int parsedCount))
+                        {
+                            count = parsedCount;
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return count;
+        }
+
+        private void UpdateLivresResCount()
+        {
+            int adherentCount = GetLivresResCount();
+            LivresResCountTextBlock.Text = adherentCount.ToString();
+        }
+
+        private int GetLivresResCount()
+        {
+            int count = 0;
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string query = "SELECT COUNT(*) FROM livres where state=0";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int parsedCount))
+                        {
+                            count = parsedCount;
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return count;
         }
     }
 }
