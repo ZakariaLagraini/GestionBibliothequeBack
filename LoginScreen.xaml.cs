@@ -29,13 +29,13 @@ namespace GestionBiblio
 
         private void Button_Submit(object sender, RoutedEventArgs e)
         {
-            String connString = "datasource=127.0.0.1;port=3306;username=root;password=zaratapa;database=mgttaxi;";
+            String connString = "datasource=127.0.0.1;port=3306;username=root;password=;database=dotnet;";
             MySqlConnection sqlconn = new MySqlConnection(connString);
             try
             {
                 if (sqlconn.State == ConnectionState.Closed)
                     sqlconn.Open();
-                String query = "SELECT COUNT(1) from client WHERE Nom=@Nom AND Password=@Password";
+                String query = "SELECT COUNT(1) from admin WHERE Nom=@Nom AND Password=@Password";
                 MySqlCommand sqlCmd = new MySqlCommand(query, sqlconn);
                 sqlCmd.CommandType = CommandType.Text;
                 sqlCmd.Parameters.AddWithValue("@Nom", Username.Text);
