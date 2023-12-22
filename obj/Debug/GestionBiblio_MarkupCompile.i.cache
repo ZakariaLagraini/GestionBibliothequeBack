@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\PC\Desktop\GestionBiblio\obj\Debug\
+=======
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\
+>>>>>>> f71f2491a62642524ce848e69a451fa5f69c91cd
 GestionBiblio
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\PC\Desktop\GestionBiblio\App.xaml
 41606232873
 
 9797857907
 58-1756834771
+=======
+C:\Users\imane\Desktop\GestionBiblio\App.xaml
+41606232873
+
+9797857907
+561431716421
+>>>>>>> f71f2491a62642524ce848e69a451fa5f69c91cd
 Dashboard.xaml;Livres.xaml;LoginScreen.xaml;MainWindow.xaml;
 
 True

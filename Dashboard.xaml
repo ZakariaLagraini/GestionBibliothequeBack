@@ -7,7 +7,11 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:GestionBiblio"
+<<<<<<< HEAD
         mc:Ignorable="d" d:DesignWidth="1100" Height="836" FontFamily="Poppins">
+=======
+        mc:Ignorable="d" d:DesignWidth="1100" Height="836" FontFamily="Montserrat">
+>>>>>>> f71f2491a62642524ce848e69a451fa5f69c91cd
     <Grid>
         <Grid.Resources>
             <Style TargetType="materialDesign:PackIcon">
@@ -18,57 +22,43 @@
         <Grid Grid.Column="0" Background="#F6F6F8" Margin="-10,0,10,0">
             <StackPanel Margin="10">
                 <Grid Height="60">
-                    <TextBlock Text="Bonjour," FontWeight="SemiBold" HorizontalAlignment="Left" Margin="10,10,10,20" FontSize="25"/>
+                    <TextBlock Text="TABLEAU DE BORD " Foreground="Navy" FontWeight="Bold" HorizontalAlignment="Left" FontFamily="Arimo" Margin="10,10,10,20" FontSize="25" />
                 </Grid>
-                <WrapPanel HorizontalAlignment="Center" Width="940">
+                <WrapPanel HorizontalAlignment="Center" Width="755">
                     <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
                         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5"
-                     BorderBrush="White" Width="136" Height="130" Background="#F6F6F8">
+                     BorderBrush="White" Width="141" Height="130" Background="#F6F6F8">
                             <StackPanel Margin="10">
-                                <materialDesign:PackIcon Kind="BookSchedule" Foreground="#29A3EC" />
-                                <TextBlock FontWeight="SemiBold" FontSize="15" Text="Livres Reserves" Margin="0 5 0 0" />
-                                <TextBlock FontWeight="Bold" FontSize="25" Text="280K" Margin="0 10 0 0" />
-                                <materialDesign:PackIcon Kind="EllipsisHorizontal" HorizontalAlignment="Right" />
+                                <materialDesign:PackIcon Kind="BookOpenVariant" Foreground="#191970" />
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" FontSize="15"  Text="Livres Disponibles" Margin="0 5 0 0" />
+                                <TextBlock x:Name="LivresCountedTextBlock" FontWeight="Bold" TextAlignment="Center" FontSize="25" Text="280K" Margin="0 10 0 0" />
                             </StackPanel>
                         </materialDesign:Card>
                     </Border>
                     <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
                         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5" BorderBrush="White" Width="136" Height="130" Background="#F6F6F8">
                             <StackPanel Margin="10">
-                                <materialDesign:PackIcon Kind="BookSchedule" Foreground="#29A3EC" />
-                                <TextBlock FontWeight="SemiBold" FontSize="15" Text="Livres Reserves" Margin="0 5 0 0" />
-                                <TextBlock FontWeight="Bold" FontSize="25" Text="280K" Margin="0 10 0 0" />
-                                <materialDesign:PackIcon Kind="EllipsisHorizontal" HorizontalAlignment="Right" />
+                                <materialDesign:PackIcon Kind="BookCancel" Foreground="#191970" />
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" FontSize="15" Text="Livres Reserves" Margin="0 5 0 0" />
+                                <TextBlock x:Name="LivresResCountTextBlock" FontWeight="Bold" TextAlignment="Center" FontSize="25" Text="280K" Margin="0 10 0 0" />
                             </StackPanel>
                         </materialDesign:Card>
                     </Border>
                     <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
                         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5" BorderBrush="White" Width="136" Height="130" Background="#F6F6F8">
                             <StackPanel Margin="10">
-                                <materialDesign:PackIcon Kind="BookSchedule" Foreground="#29A3EC" />
-                                <TextBlock FontWeight="SemiBold" FontSize="15" Text="Livres Reserves" Margin="0 5 0 0" />
-                                <TextBlock FontWeight="Bold" FontSize="25" Text="280K" Margin="0 10 0 0" />
-                                <materialDesign:PackIcon Kind="EllipsisHorizontal" HorizontalAlignment="Right" />
+                                <materialDesign:PackIcon Kind="AccountGroup" Foreground="#191970" />
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" FontSize="15" Text="Employes" Margin="0 5 0 0" />
+                                <TextBlock x:Name="EmployeCountTextBlock" FontWeight="Bold" TextAlignment="Center" FontSize="25" Text="280K" Margin="0 10 0 0" />
                             </StackPanel>
                         </materialDesign:Card>
                     </Border>
                     <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
                         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5" BorderBrush="White" Width="136" Height="130" Background="#F6F6F8">
                             <StackPanel Margin="10">
-                                <materialDesign:PackIcon Kind="BookSchedule" Foreground="#29A3EC" />
-                                <TextBlock FontWeight="SemiBold" FontSize="15" Text="Livres Reserves" Margin="0 5 0 0" />
-                                <TextBlock FontWeight="Bold" FontSize="25" Text="280K" Margin="0 10 0 0" />
-                                <materialDesign:PackIcon Kind="EllipsisHorizontal" HorizontalAlignment="Right" />
-                            </StackPanel>
-                        </materialDesign:Card>
-                    </Border>
-                    <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
-                        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5" BorderBrush="White" Width="136" Height="130" Background="#F6F6F8">
-                            <StackPanel Margin="10">
-                                <materialDesign:PackIcon Kind="BookSchedule" Foreground="#29A3EC" />
-                                <TextBlock FontWeight="SemiBold" FontSize="15" Text="Livres Reserves" Margin="0 5 0 0" />
-                                <TextBlock FontWeight="Bold" FontSize="25" Text="280K" Margin="0 10 0 0" />
-                                <materialDesign:PackIcon Kind="EllipsisHorizontal" HorizontalAlignment="Right" />
+                                <materialDesign:PackIcon Kind="AccountGroupOutline" Foreground="#191970" />
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" FontSize="15" Text="Adherents" Margin="0 5 0 0" />
+                                <TextBlock x:Name="AdherentCountTextBlock" FontWeight="Bold" TextAlignment="Center" FontSize="25" Text="280K" Margin="0 10 0 0" />
                             </StackPanel>
                         </materialDesign:Card>
                     </Border>
