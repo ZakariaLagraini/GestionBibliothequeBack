@@ -27,7 +27,7 @@
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
                              BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Click_1">
                                 <StackPanel Margin="-5">
-                                    <materialDesign:PackIcon Kind="Resistor"/>
+                                    <materialDesign:PackIcon Kind="MonitorDashboard"/>
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
@@ -35,7 +35,7 @@
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
                              BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Click">
                                 <StackPanel Margin="-5">
-                                    <materialDesign:PackIcon Kind="CircleSlice6"/>
+                                    <materialDesign:PackIcon Kind="Book"/>
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
@@ -43,7 +43,7 @@
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
                              BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
                                 <StackPanel Margin="-5">
-                                    <materialDesign:PackIcon Kind="CalendarBlankOutline"/>
+                                    <materialDesign:PackIcon Kind="AccountGroup"/>
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
@@ -51,7 +51,7 @@
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
                              BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
                                 <StackPanel Margin="-5">
-                                    <materialDesign:PackIcon Kind="EqualiserVertical"/>
+                                    <materialDesign:PackIcon Kind="Account"/>
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
@@ -59,7 +59,7 @@
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
                              BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
                                 <StackPanel Margin="-5">
-                                    <materialDesign:PackIcon Kind="ChatOutline"/>
+                                    <materialDesign:PackIcon Kind="BadgeAccountOutline"/>
                                 </StackPanel>
                             </Button>
                         </ListViewItem>

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Height="450" Width="800">
     <Grid>
-        <Label Content="s"/>
-        <Button Background="#FF5629A5"></Button>
+        
+        <Button Background="#FF5629A5" Width="150"></Button>
     </Grid>
 </UserControl>
