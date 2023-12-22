@@ -207,7 +207,6 @@ C:\Users\PC\Desktop\GestionBiblio\obj\Debug\GestionBiblio.csproj.CoreCompileInpu
 C:\Users\PC\Desktop\GestionBiblio\obj\Debug\GestionBiblio.csproj.CopyComplete
 C:\Users\PC\Desktop\GestionBiblio\obj\Debug\GestionBiblio.exe
 C:\Users\PC\Desktop\GestionBiblio\obj\Debug\GestionBiblio.pdb
-<<<<<<< HEAD
 C:\Users\PC\Desktop\GestionBiblio\bin\Debug\EntityFramework.dll
 C:\Users\PC\Desktop\GestionBiblio\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\PC\Desktop\GestionBiblio\bin\Debug\Microsoft.Bcl.HashCode.dll
@@ -243,7 +242,6 @@ C:\Users\PC\Desktop\GestionBiblio\bin\Debug\Microsoft.Extensions.Logging.Abstrac
 C:\Users\PC\Desktop\GestionBiblio\bin\Debug\Microsoft.Extensions.Options.xml
 C:\Users\PC\Desktop\GestionBiblio\bin\Debug\Microsoft.Extensions.Primitives.xml
 C:\Users\PC\Desktop\GestionBiblio\bin\Debug\System.Collections.Immutable.xml
-=======
 >>>>>>> 0034a341e3d7a6c568c86f086c60b8d892eaed1d
 C:\Users\imane\Desktop\GestionBiblio\bin\Debug\Microsoft.Bcl.HashCode.dll
 C:\Users\imane\Desktop\GestionBiblio\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll

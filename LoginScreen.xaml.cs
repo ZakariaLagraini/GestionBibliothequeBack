@@ -29,11 +29,10 @@ namespace GestionBiblio
 
         private void Button_Submit(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
+
             String connString = "datasource=127.0.0.1;port=3306;username=root;password=zaratapa;database=dotnet;";
-=======
-            String connString = "datasource=127.0.0.1;port=3306;username=root;password=;database=dotnet;";
->>>>>>> f71f2491a62642524ce848e69a451fa5f69c91cd
+
+
             MySqlConnection sqlconn = new MySqlConnection(connString);
             try
             {

@@ -24,7 +24,7 @@ namespace GestionBiblio
     public partial class Dashboard : UserControl
     {
 
-        private const string ConnectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=dotnet;"; 
+        private const string ConnectionString = "datasource=127.0.0.1;port=3306;username=root;password=zaratapa;database=dotnet;"; 
 
         public Dashboard()
         {
@@ -95,7 +95,7 @@ namespace GestionBiblio
                     connection.Open();
 
 
-                    string query = "SELECT COUNT(*) FROM livres where state=1";
+                    string query = "SELECT COUNT(*) FROM livres where State=1";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -135,7 +135,7 @@ namespace GestionBiblio
                     connection.Open();
 
 
-                    string query = "SELECT COUNT(*) FROM employe";
+                    string query = "SELECT COUNT(*) FROM livres";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -175,7 +175,7 @@ namespace GestionBiblio
                     connection.Open();
 
 
-                    string query = "SELECT COUNT(*) FROM livres where state=0";
+                    string query = "SELECT COUNT(*) FROM livres where State=0";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
