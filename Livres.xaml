@@ -1,13 +1,31 @@
 ﻿<UserControl x:Class="GestionBiblio.Livres"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionBiblio"
         mc:Ignorable="d"
         Height="450" Width="800">
     <Grid>
-        
-        <Button Background="#FF5629A5" Width="150"></Button>
+        <WrapPanel HorizontalAlignment="Center" Width="708" Margin="0,70,0,59" RenderTransformOrigin="0.5,0.5">
+            <WrapPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.157"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-1.197"/>
+                </TransformGroup>
+            </WrapPanel.RenderTransform>
+            <materialDesign:Card Margin="10" UniformCornerRadius="20" Padding="10" Height="302" Width="677">
+                <StackPanel Margin="0,0,21,-6">
+                    <TextBlock Text="Listes Des Livres" Margin="10 20" FontWeight="Bold" />
+                    
+                    <DataGrid x:Name="dataGridBooks" AutoGenerateColumns="True" Margin="10" Height="181" Width="502" />
+
+                </StackPanel>
+            </materialDesign:Card>
+
+        </WrapPanel>
     </Grid>
 </UserControl>
