@@ -4,21 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\imane\Desktop\GestionBiblio\obj\Release\
+C:\Users\PC\Desktop\GestionBib\obj\Release\
 GestionBiblio
 none
 false
 TRACE
-C:\Users\imane\Desktop\GestionBiblio\App.xaml
-41606232873
+C:\Users\PC\Desktop\GestionBib\App.xaml
+5-68920473
 
-8-1415020771
-<<<<<<< HEAD
-58-1756834771
-=======
-561431716421
->>>>>>> f71f2491a62642524ce848e69a451fa5f69c91cd
-Dashboard.xaml;Livres.xaml;LoginScreen.xaml;MainWindow.xaml;
+111865322527
+582022617453
+AjouterLivre.xaml;Dashboard.xaml;Livres.xaml;LoginScreen.xaml;MainWindow.xaml;
 
 True
 

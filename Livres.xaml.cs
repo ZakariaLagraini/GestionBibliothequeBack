@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using GestionBiblio.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,38 +21,7 @@ namespace GestionBiblio
     /// Interaction logic for Livres.xaml
     /// </summary>
     /// 
-        public class DataAccess
-        {
-            private readonly string connectionString;
-
-            public DataAccess(string connectionString)
-            {
-                this.connectionString = connectionString;
-            }
-
-            public DataTable GetBooksData()
-            {
-                DataTable dataTable = new DataTable();
-
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    try
-                    {
-                        connection.Open();
-                        string query = "SELECT Titre, Auteurs, AnneePublication, Genres, Etat FROM livres";
-                        MySqlCommand command = new MySqlCommand(query, connection);
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                        adapter.Fill(dataTable);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-
-                return dataTable;
-            }
-        }
+      
     
 
     public partial class Livres : UserControl
@@ -71,5 +41,32 @@ namespace GestionBiblio
         {
             dataGridBooks.ItemsSource = dataAccess.GetBooksData().DefaultView;
         }
+        private void RefreshDataGrid()
+        {
+
+            if (dataGridBooks != null)
+            {
+                dataGridBooks.ItemsSource = dataAccess.GetBooksData().DefaultView;
+            }
+        }
+
+        private void Button_DpiChanged(object sender, DpiChangedEventArgs e)
+        {
+
+        }
+
+        private void AjouterButton_Click(object sender, RoutedEventArgs e)
+        {
+            AjouterLivre ajouterLivreWindow = new AjouterLivre();
+
+            // Show the window as a dialog
+            if (ajouterLivreWindow.ShowDialog() == true)
+            {
+                RefreshDataGrid();
+                BindDataToGrid(); 
+            }
+        }
+
+        
     }
 }
