@@ -52,7 +52,7 @@ namespace GestionBiblio
                     connection.Open();
 
                     
-                    string query = "SELECT COUNT(*) FROM adherents";
+                    string query = "SELECT COUNT(*) FROM adherants";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {

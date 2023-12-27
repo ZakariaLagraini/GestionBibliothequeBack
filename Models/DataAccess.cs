@@ -74,5 +74,79 @@ namespace GestionBiblio.Models
                 }
             }
         }
+
+        public void DeleteBooks(List<Livre> booksToDelete)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    foreach (var livre in booksToDelete)
+                    {
+                        // Assuming there's an "Id" column in your database table
+                        string deleteQuery = $"DELETE FROM livres WHERE Id = {livre.id}";
+
+                        using (MySqlCommand cmd = new MySqlCommand(deleteQuery, connection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions appropriately (e.g., logging, displaying an error message)
+                MessageBox.Show($"Error deleting books: {ex.Message}");
+            }
+        
+    }
+
+        public void UpdateBook(Livre updatedBook)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    
+                    string updateQuery = @"UPDATE livres 
+                                       SET Titre = @Titre, 
+                                           Auteurs = @Auteurs,
+                                           AnneePublication = @AnneePublication,
+                                           Genres = @Genres,
+                                           Etat = @Etat,
+                                           State = @State
+                                           WHERE id = @id";
+                                           
+
+                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, connection))
+                    {
+                        // Add parameters to the command
+                        cmd.Parameters.AddWithValue("@Id", updatedBook.id);
+                        cmd.Parameters.AddWithValue("@Titre", updatedBook.Titre);
+                        cmd.Parameters.AddWithValue("@Auteurs", updatedBook.Auteurs);
+                        cmd.Parameters.AddWithValue("@AnneePublication", updatedBook.AnneePublication);
+                        cmd.Parameters.AddWithValue("@Genres", updatedBook.Genres);
+                        cmd.Parameters.AddWithValue("@Etat", updatedBook.Etat);
+                        cmd.Parameters.AddWithValue("@State", updatedBook.State);
+
+                        // Execute the update command
+                        cmd.ExecuteNonQuery();
+                        Console.WriteLine(updatedBook.Genres.ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions appropriately (e.g., logging, displaying an error message)
+                MessageBox.Show($"Error updating book: {ex.Message}");
+                Console.WriteLine(ex.Message.ToString());
+            }
+        }
+
+
     }
 }

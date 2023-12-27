@@ -1,0 +1,157 @@
+﻿<Window x:Class="GestionBiblio.ModifierLivre"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionBiblio"
+        mc:Ignorable="d"
+        Height="500" Width="330">
+    <Grid Margin="0,0,10,0">
+        <StackPanel  Width="220"
+                     Grid.Row="1"
+                     Orientation="Vertical"
+                     Margin="0,0,0,0">
+
+            <TextBlock Text="ID"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,10,0,0"/>
+            
+            <TextBox Name="Id"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0" />
+
+            <TextBlock Text="Titre"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,10,0,0"/>
+            
+            <TextBox Name="Titre"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0" />
+
+            <TextBlock Text="Auteur"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,10,0,0"/>
+            
+            <TextBox Name="Auteurs"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0" />
+
+            <TextBlock Text="Annee de publication"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,10,0,0"/>
+            
+            <TextBox Name="Annee_pub"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0" />
+
+            <TextBlock Text="Genre"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,10,0,0"/>
+            
+            <TextBox Name="Genres"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0"/>
+
+            <TextBlock Text="Etat"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,10,0,0"/>
+            
+            <TextBox Name="Etat"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0"/>
+
+            <TextBlock Text="State"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,5,0,0"/>
+            
+            <TextBox Name="State"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0" />
+            <Button Content="Enregistrer" Click="EnregistrerModButton_Click" Margin="0,5,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

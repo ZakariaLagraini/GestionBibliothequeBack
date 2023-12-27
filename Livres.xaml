@@ -6,9 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionBiblio"
         mc:Ignorable="d"
-        Height="650" Width="1000">
+        Height="650" Width="1200">
     <Grid>
-        <WrapPanel HorizontalAlignment="Center" Height="650" Width="1000" Margin="0,3,0,3" RenderTransformOrigin="0.5,0.5">
+        <WrapPanel HorizontalAlignment="Center" Height="650" Width="1150" Margin="0,3,0,3" RenderTransformOrigin="0.5,0.5">
             <WrapPanel.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -17,15 +17,31 @@
                     <TranslateTransform Y="-1.197"/>
                 </TransformGroup>
             </WrapPanel.RenderTransform>
-            <materialDesign:Card Margin="10" UniformCornerRadius="20" Padding="10" Height="635" Width="981">
+            <materialDesign:Card Margin="10" UniformCornerRadius="20" Padding="10" Height="635" Width="1150">
                 <StackPanel Margin="0,0,21,-6">
                     <WrapPanel>
                         <TextBlock Text="Listes Des Livres" Margin="20 20 10 20" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold"></TextBlock>
                         <Button Content="Ajouter" Click="AjouterButton_Click" Margin="60 0 0 0" Width="103" Height="30"/>
-                        <TextBox Text="Rechercher" Margin="90 0 0 0" BorderBrush="Blue" Width="193" Height="30" />
+                        <Button Content="Supprimer" Click="DeleteButton_Click" Margin="60 0 0 0" Width="103" Height="30"/>
+                        <Button Content="Modifier" Click="UpdateButton_Click" Margin="60 0 0 0" Width="103" Height="30"/>
+                        <TextBlock Text="Recherche :" FontSize="15" Margin="90 0 0 0" VerticalAlignment="Center"/>
+                        <TextBox Margin="10 0 0 0" BorderBrush="Blue" Width="100" Height="30" />
                         <Button Background="Transparent"/>
+                        
                     </WrapPanel>
-                    <DataGrid x:Name="dataGridBooks" Margin="30 30" AutoGenerateColumns="true" Height="456" Width="865" />
+
+                    <DataGrid x:Name="dataGridBooks" Margin="30 30" AutoGenerateColumns="true" Height="456" Width="865">
+                        <DataGrid.Columns>
+                            <!-- Add a template column with a radio button -->
+                            <DataGridTemplateColumn Header="Select">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <RadioButton Name="radioButton" IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
             </materialDesign:Card>
 
