@@ -44,6 +44,29 @@ namespace GestionBiblio.Models
             return dataTable;
         }
 
+        public DataTable GetBooksDataFind()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM livres";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            return dataTable;
+        }
+
         public void SaveBook(Livre newBook)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -270,6 +293,29 @@ namespace GestionBiblio.Models
                 MessageBox.Show($"Error updating adherants: {ex.Message}");
                 Console.WriteLine(ex.Message.ToString());
             }
+        }
+
+        public DataTable GetAdherantDataFind(string search)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = $"SELECT * FROM adherants WHERE id LIKE '%{search}%' OR Nom LIKE '%{search}%' OR Prenom LIKE '%{search}%' OR email LIKE '%{search}%'";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            return dataTable;
         }
 
     }

@@ -25,8 +25,8 @@
                         <Button Content="Supprimer" Click="DeleteButton_Click" Margin="60 0 0 0" Width="103" Height="30"/>
                         <Button Content="Modifier" Click="UpdateButton_Click" Margin="60 0 0 0" Width="103" Height="30"/>
                         <TextBlock Text="Recherche :" FontSize="15" Margin="90 0 0 0" VerticalAlignment="Center"/>
-                        <TextBox Margin="10 0 0 0" BorderBrush="Blue" Width="100" Height="30" />
-                        <Button Background="Transparent"/>
+                        <TextBox Name="SearchBox" Margin="10 0 0 0" BorderBrush="Blue" Width="100" Height="30" TextChanged="TextBox_TextChanged" />
+                        <Button Background="Transparent" Click="Find"/>
 
                     </WrapPanel>
                     <Button Content="Export to Excel" Click="ExportToExcel_Click" Margin="60 0 0 0" Width="148" Height="30"/>

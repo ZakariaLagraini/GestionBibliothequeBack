@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace GestionBiblio
 {
@@ -43,6 +44,19 @@ namespace GestionBiblio
             dataGridAdherants.ItemsSource = dataAccess.GetAdherantsData().DefaultView;
 
         }
+
+        private void BindDataToGridFind(string search)
+        {
+            DataView dv = dataAccess.GetAdherantDataFind(search).DefaultView;
+
+            // Instead of clearing Items and setting ItemsSource directly, you can modify the existing DataView
+            dataGridAdherants.ItemsSource = dv;
+
+            // Optionally, you can call Refresh to force the grid to update its UI
+            dataGridAdherants.Items.Refresh();
+        }
+
+
         private void RefreshDataGrid()
         {
 
@@ -52,7 +66,16 @@ namespace GestionBiblio
             }
         }
 
-          private void DeleteSelectedRows()
+        private void RefreshDataGridFind(string search)
+        {
+
+            if (dataGridAdherants != null)
+            {
+                dataGridAdherants.ItemsSource = dataAccess.GetAdherantDataFind(search).DefaultView;
+            }
+        }
+
+        private void DeleteSelectedRows()
            {
                var selectedItems = dataGridAdherants.SelectedItems;
 
@@ -225,6 +248,32 @@ namespace GestionBiblio
                }
 
            }
-       
-    }
+
+        
+
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void Find(object sender, RoutedEventArgs e)
+        {
+            string searchTerm = SearchBox.Text; // Assuming textBox is the name of your TextBox control
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                BindDataToGridFind(searchTerm);
+                RefreshDataGridFind(searchTerm);
+            }
+            else
+            {
+                // If the search term is empty, refresh the grid with the original data
+                RefreshDataGrid();
+            }
+
+        }
+
+
+        }
 }
