@@ -18,6 +18,9 @@ namespace GestionBiblio.Models
             this.connectionString = connectionString;
         }
 
+
+
+    // Livres.xaml.cs ********************************************************************************************************************
         public DataTable GetBooksData()
         {
             DataTable dataTable = new DataTable();
@@ -146,6 +149,128 @@ namespace GestionBiblio.Models
             }
         }
 
+
+        // Adherants.xaml.cs *******************************************************************************************************************
+
+        public DataTable GetAdherantsData()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM adherants";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            return dataTable;
+        }
+
+        public void DeleteAdherants(List<Adherant> AdherantsToDelete)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    foreach (var adherant in AdherantsToDelete)
+                    {
+
+                        string deleteQuery = $"DELETE FROM adherants WHERE Id = {adherant.id}";
+
+                        using (MySqlCommand cmd = new MySqlCommand(deleteQuery, connection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error deleting Adherants: {ex.Message}");
+            }
+
+        }
+
+        public void SaveAdherant(Adherant newAdherant)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string query = "INSERT INTO adherants (id, Nom, Prenom, email) " +
+                                    "VALUES (@Id, @Nom, @Prenom, @email)";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+
+                        command.Parameters.AddWithValue("@Id", newAdherant.id);
+                        command.Parameters.AddWithValue("@Nom", newAdherant.Nom);
+                        command.Parameters.AddWithValue("@Prenom", newAdherant.Prenom);
+                        command.Parameters.AddWithValue("@email", newAdherant.email);
+                       
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        public void UpdateAdherant(Adherant updatedAdherant)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+                    string updateQuery = @"UPDATE adherants 
+                                           SET Nom = @Nom, 
+                                           Prenom = @Prenom,
+                                           email = @email
+                                           WHERE id = @id";
+
+
+                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@id", updatedAdherant.id);
+                        cmd.Parameters.AddWithValue("@Nom", updatedAdherant.Nom);
+                        cmd.Parameters.AddWithValue("@Prenom", updatedAdherant.Prenom);
+                        cmd.Parameters.AddWithValue("@email", updatedAdherant.email);
+                       
+
+
+                        cmd.ExecuteNonQuery();
+                        
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error updating adherants: {ex.Message}");
+                Console.WriteLine(ex.Message.ToString());
+            }
+        }
 
     }
 }

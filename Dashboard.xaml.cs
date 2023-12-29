@@ -24,7 +24,7 @@ namespace GestionBiblio
     public partial class Dashboard : UserControl
     {
 
-        private const string ConnectionString = "datasource=127.0.0.1;port=3306;username=root;password=zaratapa;database=dotnet;"; 
+        private const string ConnectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=dotnet;"; 
 
         public Dashboard()
         {

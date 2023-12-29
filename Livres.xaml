@@ -29,7 +29,7 @@
                         <Button Background="Transparent"/>
                         
                     </WrapPanel>
-                    <Button Content="Export to Excel" Click="ExportToExcel_Click" Margin="60 0 0 0" Width="120" Height="30"/>
+                    <Button Content="Export to Excel" Click="ExportToExcel_Click" Margin="60 0 0 0" Width="154" Height="30"/>
 
                     <DataGrid x:Name="dataGridBooks" Margin="30 30" AutoGenerateColumns="true" Height="456" Width="865">
                         <DataGrid.Columns>

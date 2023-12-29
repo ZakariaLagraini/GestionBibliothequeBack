@@ -25,7 +25,7 @@
                     <ListView Margin="0 15">
                         <ListViewItem HorizontalAlignment="Center" Margin="0 10">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
-                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Click_1">
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Dashboard">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="MonitorDashboard"/>
                                 </StackPanel>
@@ -33,7 +33,7 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
-                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Click">
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Livres">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Book"/>
                                 </StackPanel>
@@ -41,7 +41,7 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0 10">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
-                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Adherants">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="AccountGroup"/>
                                 </StackPanel>
@@ -49,7 +49,7 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
-                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Employee">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Account"/>
                                 </StackPanel>
@@ -57,7 +57,7 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0 10">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
-                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Auteurs">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="BadgeAccountOutline"/>
                                 </StackPanel>
