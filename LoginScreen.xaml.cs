@@ -70,7 +70,6 @@ namespace GestionBiblio
         {
             Window parentWindow = Window.GetWindow(this);
 
-            // Fermez la fenêtre
             if (parentWindow != null)
             {
                 parentWindow.Close();
@@ -81,7 +80,6 @@ namespace GestionBiblio
         {
             Window parentWindow = Window.GetWindow(this);
 
-            // Minimisez la fenêtre
             if (parentWindow != null)
             {
                 parentWindow.WindowState = WindowState.Minimized;

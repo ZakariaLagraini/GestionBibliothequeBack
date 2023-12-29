@@ -49,13 +49,13 @@ namespace GestionBiblio.Models
                 {
                     connection.Open();
 
-                    // Create SQL command for inserting a new book
+                    
                     string query = "INSERT INTO livres (id, Titre, Auteurs, AnneePublication, Genres, Etat, State) " +
                                     "VALUES (@Id, @Titre, @Auteurs, @AnneePublication, @Genres, @Etat, @State)";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        // Add parameters to the command
+                        
                         command.Parameters.AddWithValue("@Id", newBook.id);
                         command.Parameters.AddWithValue("@Titre", newBook.Titre);
                         command.Parameters.AddWithValue("@Auteurs", newBook.Auteurs);
@@ -64,7 +64,6 @@ namespace GestionBiblio.Models
                         command.Parameters.AddWithValue("@Etat", newBook.Etat);
                         command.Parameters.AddWithValue("@State", newBook.State);
 
-                        // Execute the command
                         command.ExecuteNonQuery();
                     }
                 }
@@ -85,7 +84,7 @@ namespace GestionBiblio.Models
 
                     foreach (var livre in booksToDelete)
                     {
-                        // Assuming there's an "Id" column in your database table
+                        
                         string deleteQuery = $"DELETE FROM livres WHERE Id = {livre.id}";
 
                         using (MySqlCommand cmd = new MySqlCommand(deleteQuery, connection))
@@ -97,7 +96,7 @@ namespace GestionBiblio.Models
             }
             catch (Exception ex)
             {
-                // Handle exceptions appropriately (e.g., logging, displaying an error message)
+               
                 MessageBox.Show($"Error deleting books: {ex.Message}");
             }
         
@@ -124,7 +123,7 @@ namespace GestionBiblio.Models
 
                     using (MySqlCommand cmd = new MySqlCommand(updateQuery, connection))
                     {
-                        // Add parameters to the command
+                     
                         cmd.Parameters.AddWithValue("@Id", updatedBook.id);
                         cmd.Parameters.AddWithValue("@Titre", updatedBook.Titre);
                         cmd.Parameters.AddWithValue("@Auteurs", updatedBook.Auteurs);
@@ -133,7 +132,7 @@ namespace GestionBiblio.Models
                         cmd.Parameters.AddWithValue("@Etat", updatedBook.Etat);
                         cmd.Parameters.AddWithValue("@State", updatedBook.State);
 
-                        // Execute the update command
+                        
                         cmd.ExecuteNonQuery();
                         Console.WriteLine(updatedBook.Genres.ToString());
                     }
@@ -141,7 +140,7 @@ namespace GestionBiblio.Models
             }
             catch (Exception ex)
             {
-                // Handle exceptions appropriately (e.g., logging, displaying an error message)
+                
                 MessageBox.Show($"Error updating book: {ex.Message}");
                 Console.WriteLine(ex.Message.ToString());
             }

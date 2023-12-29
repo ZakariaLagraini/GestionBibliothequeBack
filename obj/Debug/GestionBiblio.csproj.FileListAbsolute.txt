@@ -401,3 +401,9 @@ C:\Users\PC\Desktop\GestionBib\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\PC\Desktop\GestionBib\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\PC\Desktop\GestionBib\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\PC\Desktop\GestionBib\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\PC\Desktop\GestionBib\bin\Debug\EPPlus.dll
+C:\Users\PC\Desktop\GestionBib\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\PC\Desktop\GestionBib\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\PC\Desktop\GestionBib\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\PC\Desktop\GestionBib\bin\Debug\EPPlus.xml
+C:\Users\PC\Desktop\GestionBib\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

@@ -20,7 +20,7 @@ namespace GestionBiblio
     /// </summary>
     public partial class ModifierLivre : Window
     {
-        private Livre existingBook; // The Livre being edited (if it's an update)
+        private Livre existingBook; 
 
         private readonly string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=zaratapa;database=dotnet;";
         private readonly DataAccess dataAccess;
@@ -42,7 +42,7 @@ namespace GestionBiblio
 
         private void PopulateFields(Livre Livre)
         {
-            // Populate the input fields with the existing Livre data
+           
             Id.Text = Livre.id.ToString();
             Titre.Text = Livre.Titre;
             Auteurs.Text = Livre.Auteurs;
@@ -55,7 +55,7 @@ namespace GestionBiblio
         private void EnregistrerModButton_Click(object sender, RoutedEventArgs e)
         {
 
-            // Create or update the Livre based on user input
+           
             Livre updatedBook = new Livre(
 
             id: Convert.ToInt32(Id.Text),
@@ -68,14 +68,13 @@ namespace GestionBiblio
         );
 
 
-            // Call the appropriate method in your data access layer to save the Livre
+     
             if (existingBook != null)
             {
                 dataAccess.UpdateBook(updatedBook);
             }
            
 
-            // Close the window
             this.DialogResult = true;
         }
     }

@@ -31,7 +31,7 @@ namespace GestionBiblio
         {
             try
             {
-                // Get values from textboxes
+              
                 if (!int.TryParse(Id.Text, out int id))
                 {
                     MessageBox.Show("Invalid ID. Please enter a valid integer.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -50,13 +50,10 @@ namespace GestionBiblio
                 string etat = Etat.Text;
                 string state = State.Text;
 
-                // Create a new Livre object
                 Livre newBook = new Livre(id, titre, auteurs, anneePublication, genres, etat, state);
 
-                // Save the new book to the database
                 dataAccess.SaveBook(newBook); 
 
-                // Close the window after saving
                 this.Close();
             }
             catch (Exception ex)

@@ -1,11 +1,15 @@
 ﻿using GestionBiblio.Models;
 using MySql.Data.MySqlClient;
+using OfficeOpenXml.Style;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -41,7 +45,6 @@ namespace GestionBiblio
         {
             dataGridBooks.Items.Clear();
 
-            // Set the ItemsSource
             dataGridBooks.ItemsSource = dataAccess.GetBooksData().DefaultView;
         
     }
@@ -68,8 +71,7 @@ namespace GestionBiblio
 
                     if (row != null)
                     {
-                        // Extract the necessary data from the row or use the corresponding data structure (Book class)
-                        // For example:
+                        
                         int id = Convert.ToInt32(row["Id"]);
                         string title = row["Titre"].ToString();
                         string author = row["Auteurs"].ToString();
@@ -78,15 +80,14 @@ namespace GestionBiblio
                         string etat = row["Etat"].ToString();
                         string state = row["State"].ToString();
 
-                        // Create a Book object and add it to the list of books to delete
                         booksToDelete.Add(new Livre(id, title, author, annee_pub, genres, etat, state));
                     }
                 }
 
-                // Perform the deletion in the database
+               
                 dataAccess.DeleteBooks(booksToDelete);
 
-                // Refresh the DataGrid
+                
                 RefreshDataGrid();
             }
             else
@@ -110,10 +111,10 @@ namespace GestionBiblio
 
                 if (rowView != null)
                 {
-                    // Assuming there's an "Id" column in your DataTable
+                   
                     int Id = Convert.ToInt32(rowView["Id"]);
 
-                    // Create a Book object with existing data
+                    
                     Livre selectedBook = new Livre(
                      id: Id,
                      titre: rowView["Titre"].ToString(),
@@ -125,14 +126,14 @@ namespace GestionBiblio
                     );
                    
 
-                    // Open the update window and pass the selected book
+                    
                     ModifierLivre updateLivreWindow = new ModifierLivre(selectedBook);
 
-                    // Show the window as a dialog
+                  
                     if (updateLivreWindow.ShowDialog() == true)
                     {   
 
-                        // Refresh the DataGrid
+                        
                         RefreshDataGrid();
                     }
                 }
@@ -153,7 +154,6 @@ namespace GestionBiblio
         {
             AjouterLivre ajouterLivreWindow = new AjouterLivre();
 
-            // Show the window as a dialog
             if (ajouterLivreWindow.ShowDialog() == true)
             {
                 RefreshDataGrid();
@@ -161,6 +161,80 @@ namespace GestionBiblio
             }
         }
 
-        
+        private void ExportToExcel_Click(object sender, RoutedEventArgs e)
+        {
+            ExportToExcel();
+        }
+
+        private void ExportToExcel()
+        {
+            var saveFileDialog = new Microsoft.Win32.SaveFileDialog
+            {
+                FileName = "BookList",
+                DefaultExt = ".xlsx",
+                Filter = "Excel Files (*.xlsx)|*.xlsx|All files (*.*)|*.*"
+            };
+
+            bool? result = saveFileDialog.ShowDialog();
+
+            if (result == true)
+            {
+                FileInfo file = new FileInfo(saveFileDialog.FileName);
+
+                using (ExcelPackage package = new ExcelPackage(file))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("BookList");
+
+                    // Add column headers
+
+                    for (int i = 0; i < dataGridBooks.Columns.Count; i++)
+                    {
+                        if (dataGridBooks.Columns[i] is DataGridBoundColumn boundColumn)
+                        {
+                            var bindingPath = (boundColumn.Binding as Binding)?.Path.Path;
+                            if (!string.IsNullOrEmpty(bindingPath))
+                            {
+                                worksheet.Cells[1, i + 1].Value = bindingPath;
+                            }
+                        }
+                    }
+
+                    // Add data rows
+                    for (int i = 0; i < dataGridBooks.Items.Count; i++)
+                    {
+                        DataRowView rowView = dataGridBooks.Items[i] as DataRowView;
+
+                        if (rowView != null)
+                        {
+                            DataRow row = rowView.Row;
+
+                            for (int j = 0; j < dataGridBooks.Columns.Count; j++)
+                            {
+                                if (dataGridBooks.Columns[j] is DataGridBoundColumn boundColumn)
+                                {
+                                    var bindingPath = (boundColumn.Binding as Binding)?.Path.Path;
+                                    if (!string.IsNullOrEmpty(bindingPath))
+                                    {
+                                        worksheet.Cells[i + 2, j + 1].Value = row[bindingPath];
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                    // AutoFit columns for better readability
+                    worksheet.Cells.AutoFitColumns(0);
+                    worksheet.Cells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+
+                    package.Save();
+                }
+
+                MessageBox.Show("Data exported successfully!");
+            }
+        }
+
+
+
     }
 }
