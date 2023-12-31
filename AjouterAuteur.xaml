@@ -1,0 +1,99 @@
+﻿<Window x:Class="GestionBiblio.AjouterAuteur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionBiblio"
+        mc:Ignorable="d"
+        Height="500" Width="330">
+    <Grid Margin="0,0,10,0">
+        <StackPanel  Width="220"
+                     Grid.Row="1"
+                     Orientation="Vertical"
+                     Margin="0,0,0,0">
+
+            <TextBlock Text="ID"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,80,0,0"/>
+
+            <TextBox Name="Id"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0" />
+
+            <TextBlock Text="Nom"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,10,0,0"/>
+
+            <TextBox Name="Nom"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0" />
+
+            <TextBlock Text="Prenom"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,10,0,0"/>
+
+            <TextBox Name="Prenom"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0" />
+
+            <TextBlock Text="LivreId"
+           Foreground="DarkGray"
+           FontSize="12"
+           FontWeight="Medium"
+           FontFamily="Montserrat"                             
+           Margin="0,10,0,0"/>
+
+            <TextBox Name="LivreId"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Montserrat"                            
+         Foreground="Black"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,2"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="30,0,0,0" />
+
+
+            <Button Content="Enregistrer" Click="EnregistrerButton_Click" Margin="0,35,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

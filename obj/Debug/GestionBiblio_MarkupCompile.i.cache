@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\imane\Desktop\GestionBiblio\obj\Debug\
+C:\Users\PC\Desktop\GestionBib\obj\Debug\
 GestionBiblio
 none
 false
 DEBUG;TRACE
-C:\Users\imane\Desktop\GestionBiblio\App.xaml
-9595647051
+C:\Users\PC\Desktop\GestionBib\App.xaml
+12-1158821345
 
-17473870268
-69-683131127
-Adherants.xaml;AjouterAdherant.xaml;AjouterLivre.xaml;Dashboard.xaml;Livres.xaml;LoginScreen.xaml;MainWindow.xaml;ModifierAdherant.xaml;ModifierLivre.xaml;
+21-1445279574
+691182752363
+Adherants.xaml;AjouterAdherant.xaml;AjouterAuteur.xaml;AjouterLivre.xaml;Auteurs.xaml;Dashboard.xaml;Livres.xaml;LoginScreen.xaml;MainWindow.xaml;ModifierAdherant.xaml;ModifierAuteur.xaml;ModifierLivre.xaml;
 
 True
 

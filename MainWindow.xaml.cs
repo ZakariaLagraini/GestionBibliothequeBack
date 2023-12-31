@@ -67,7 +67,7 @@ namespace GestionBiblio
 
         // *********************************************************
 
-        private void Button_Employee(object sender, RoutedEventArgs e)
+        private void Button_Employe(object sender, RoutedEventArgs e)
         {
 
         }
@@ -76,7 +76,8 @@ namespace GestionBiblio
 
         private void Button_Auteurs(object sender, RoutedEventArgs e)
         {
-
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new Auteurs());
         }
     }
 }

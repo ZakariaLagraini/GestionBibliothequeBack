@@ -445,3 +445,15 @@ C:\Users\imane\Desktop\GestionBiblio\obj\Debug\AjouterAdherant.g.cs
 C:\Users\imane\Desktop\GestionBiblio\obj\Debug\ModifierAdherant.g.cs
 C:\Users\imane\Desktop\GestionBiblio\obj\Debug\AjouterAdherant.baml
 C:\Users\imane\Desktop\GestionBiblio\obj\Debug\ModifierAdherant.baml
+C:\Users\PC\Desktop\GestionBib\obj\Debug\Adherants.g.cs
+C:\Users\PC\Desktop\GestionBib\obj\Debug\AjouterAdherant.g.cs
+C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierAdherant.g.cs
+C:\Users\PC\Desktop\GestionBib\obj\Debug\Adherants.baml
+C:\Users\PC\Desktop\GestionBib\obj\Debug\AjouterAdherant.baml
+C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierAdherant.baml
+C:\Users\PC\Desktop\GestionBib\obj\Debug\AjouterAuteur.g.cs
+C:\Users\PC\Desktop\GestionBib\obj\Debug\Auteurs.g.cs
+C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierAuteur.g.cs
+C:\Users\PC\Desktop\GestionBib\obj\Debug\AjouterAuteur.baml
+C:\Users\PC\Desktop\GestionBib\obj\Debug\Auteurs.baml
+C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierAuteur.baml

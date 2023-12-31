@@ -318,5 +318,164 @@ namespace GestionBiblio.Models
             return dataTable;
         }
 
+
+        // Auteurs.xaml.cs *********************************************************************************************************************************************************************
+
+
+        public DataTable GetAuteursData()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM auteurs";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            return dataTable;
+        }
+
+        public void DeleteAuteurs(List<Auteur> AuteursToDelete)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    foreach (var auteur in AuteursToDelete)
+                    {
+
+                        string deleteQuery = $"DELETE FROM auteurs WHERE Id = {auteur.id}";
+
+                        using (MySqlCommand cmd = new MySqlCommand(deleteQuery, connection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error deleting Adherants: {ex.Message}");
+            }
+
+        }
+
+        public void SaveAuteur(Auteur newAuteur)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string query = "INSERT INTO auteurs (id, Nom, Prenom, LivreId) " +
+                                    "VALUES (@Id, @Nom, @Prenom, @LivreId)";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+
+                        command.Parameters.AddWithValue("@Id", newAuteur.id);
+                        command.Parameters.AddWithValue("@Nom", newAuteur.Nom);
+                        command.Parameters.AddWithValue("@Prenom", newAuteur.Prenom);
+                        command.Parameters.AddWithValue("@LivreId", newAuteur.LivresId);
+
+                        Console.WriteLine("Executing query: " + command.CommandText);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    // Log the exception details for debugging
+                    Console.WriteLine($"MySqlException: {ex.Message}");
+                    Console.WriteLine($"Error code: {ex.ErrorCode}");
+                    Console.WriteLine($"SQL State: {ex.SqlState}");
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        public void UpdateAuteur(Auteur updatedAuteur)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+                    string updateQuery = @"UPDATE auteurs 
+                                           SET Nom = @Nom, 
+                                           Prenom = @Prenom,
+                                           livreId = @LivreId
+                                           WHERE id = @id";
+
+
+                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@id", updatedAuteur.id);
+                        cmd.Parameters.AddWithValue("@Nom", updatedAuteur.Nom);
+                        cmd.Parameters.AddWithValue("@Prenom", updatedAuteur.Prenom);
+                        cmd.Parameters.AddWithValue("@LivreId", updatedAuteur.LivresId);
+
+
+
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error updating auteurs: {ex.Message}");
+                Console.WriteLine(ex.Message.ToString());
+            }
+        }
+
+        public DataTable GetAuteurDataFind(string search)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = $"SELECT * FROM auteurs WHERE id LIKE '%{search}%' OR Nom LIKE '%{search}%' OR Prenom LIKE '%{search}%' OR LivreId LIKE '%{search}%'";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            return dataTable;
+        }
+
+        // ***********************************************************************************************************************************************************************
+
+
     }
 }
