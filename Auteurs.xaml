@@ -20,7 +20,7 @@
             <materialDesign:Card Margin="10" UniformCornerRadius="20" Padding="10" Height="635" Width="1150">
                 <StackPanel Margin="0,0,21,-6">
                     <WrapPanel>
-                        <TextBlock Text="Listes Des Auterus" Margin="20 20 10 20" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="Listes Des Auteurs" Margin="20 20 10 20" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold"></TextBlock>
                         <Button Content="Ajouter" Click="AjouterButton_Click" Margin="60 0 0 0" Width="103" Height="30"/>
                         <Button Content="Supprimer" Click="DeleteButton_Click" Margin="60 0 0 0" Width="103" Height="30"/>
                         <Button Content="Modifier" Click="UpdateButton_Click" Margin="60 0 0 0" Width="103" Height="30"/>

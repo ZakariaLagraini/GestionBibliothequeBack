@@ -58,9 +58,11 @@
                                 <TextBlock x:Name="AdherentCountTextBlock" FontWeight="Bold" TextAlignment="Center" FontSize="25" Text="280K" Margin="0 10 0 0" />
                             </StackPanel>
                         </materialDesign:Card>
+                        
                     </Border>
                 </WrapPanel>
                 <WrapPanel HorizontalAlignment="Center" Height="504" Width="871" Margin="30">
+                    
                     <materialDesign:Card Margin="10" UniformCornerRadius="20" Padding="10" Height="257" Width="415">
                         <StackPanel Margin="0,0,21,-6">
                             <TextBlock Text="Key Matrics" Margin="10 20" FontWeight="SemiBold" />
@@ -102,6 +104,8 @@
                             </Grid>
                         </StackPanel>
                     </materialDesign:Card>
+
+                 
                 </WrapPanel>
             </StackPanel>
         </Grid>

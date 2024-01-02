@@ -221,6 +221,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AjouterEmploye.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AjouterLivre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -230,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Employes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,6 +262,9 @@
     <Compile Include="AjouterAuteur.xaml.cs">
       <DependentUpon>AjouterAuteur.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AjouterEmploye.xaml.cs">
+      <DependentUpon>AjouterEmploye.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AjouterLivre.xaml.cs">
       <DependentUpon>AjouterLivre.xaml</DependentUpon>
     </Compile>
@@ -266,6 +277,9 @@
     </Compile>
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Employes.xaml.cs">
+      <DependentUpon>Employes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Livres.xaml.cs">
       <DependentUpon>Livres.xaml</DependentUpon>
@@ -285,6 +299,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ModifierEmploye.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ModifierLivre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -294,12 +312,16 @@
     <Compile Include="Models\Adherant.cs" />
     <Compile Include="Models\Auteur.cs" />
     <Compile Include="Models\DataAccess.cs" />
+    <Compile Include="Models\Employe.cs" />
     <Compile Include="Models\Livre.cs" />
     <Compile Include="ModifierAdherant.xaml.cs">
       <DependentUpon>ModifierAdherant.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModifierAuteur.xaml.cs">
       <DependentUpon>ModifierAuteur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModifierEmploye.xaml.cs">
+      <DependentUpon>ModifierEmploye.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModifierLivre.xaml.cs">
       <DependentUpon>ModifierLivre.xaml</DependentUpon>

@@ -457,3 +457,15 @@ C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierAuteur.g.cs
 C:\Users\PC\Desktop\GestionBib\obj\Debug\AjouterAuteur.baml
 C:\Users\PC\Desktop\GestionBib\obj\Debug\Auteurs.baml
 C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierAuteur.baml
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\AjouterAuteur.g.cs
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\Auteurs.g.cs
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\ModifierAuteur.g.cs
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\AjouterAuteur.baml
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\Auteurs.baml
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\ModifierAuteur.baml
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\AjouterEmploye.g.cs
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\Employes.g.cs
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\ModifierEmploye.g.cs
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\AjouterEmploye.baml
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\Employes.baml
+C:\Users\imane\Desktop\GestionBiblio\obj\Debug\ModifierEmploye.baml
