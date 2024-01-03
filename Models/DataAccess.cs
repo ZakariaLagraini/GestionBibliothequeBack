@@ -688,6 +688,41 @@ namespace GestionBiblio.Models
             return dataTable;
         }
 
+
+
+        public void ImportAuteursData(DataTable dataTable)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            int id = Convert.ToInt32(row["Id"]);
+                            string nom = row["Nom"].ToString();
+                            string prenom = row["Prenom"].ToString();
+                            int livreid = Convert.ToInt32(row["Livreid"]);
+
+                            // Assuming your Livre class has a method to insert data into the database
+                            Auteur auteur = new Auteur(id, nom, prenom, livreid);
+                            auteur.InsertIntoDatabase(connection, transaction); // Implement this method in your Livre class
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception($"Error importing data: {ex.Message}");
+                    }
+                }
+            }
+        }
+
         // ***********************************************************************************************************************************************************************
 
 
