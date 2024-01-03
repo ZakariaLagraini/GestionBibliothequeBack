@@ -175,7 +175,29 @@ namespace GestionBiblio
                }
            }
 
-           private void ExportToExcel_Click(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Find(object sender, RoutedEventArgs e)
+        {
+            string searchTerm = SearchBox.Text; // Assuming textBox is the name of your TextBox control
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                BindDataToGridFind(searchTerm);
+                RefreshDataGridFind(searchTerm);
+            }
+            else
+            {
+                // If the search term is empty, refresh the grid with the original data
+                RefreshDataGrid();
+            }
+
+        }
+
+        private void ExportToExcel_Click(object sender, RoutedEventArgs e)
            {
                ExportToExcel();
            }
@@ -248,32 +270,79 @@ namespace GestionBiblio
                }
 
            }
-
-        
-
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ImportFromExcel_Click(object sender, RoutedEventArgs e)
         {
-            
+            ImportFromExcel();
         }
 
-        private void Find(object sender, RoutedEventArgs e)
+        private void ImportFromExcel()
         {
-            string searchTerm = SearchBox.Text; // Assuming textBox is the name of your TextBox control
-
-            if (!string.IsNullOrEmpty(searchTerm))
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog
             {
-                BindDataToGridFind(searchTerm);
-                RefreshDataGridFind(searchTerm);
-            }
-            else
-            {
-                // If the search term is empty, refresh the grid with the original data
-                RefreshDataGrid();
-            }
+                DefaultExt = ".xlsx",
+                Filter = "Excel Files (*.xlsx)|*.xlsx|All files (*.*)|*.*"
+            };
 
+            bool? result = openFileDialog.ShowDialog();
+
+            if (result == true)
+            {
+                try
+                {
+                    FileInfo file = new FileInfo(openFileDialog.FileName);
+
+                    using (ExcelPackage package = new ExcelPackage(file))
+                    {
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
+
+                        if (worksheet != null)
+                        {
+                            DataTable dataTable = new DataTable();
+
+                            // Assuming the first row in the Excel file contains column headers
+                            for (int i = 1; i <= worksheet.Dimension.Columns; i++)
+                            {
+                                string columnName = worksheet.Cells[1, i].Text;
+                                dataTable.Columns.Add(columnName);
+                            }
+
+                            // Start reading data from the second row
+                            for (int row = 2; row <= worksheet.Dimension.Rows; row++)
+                            {
+                                DataRow dataRow = dataTable.NewRow();
+
+                                for (int col = 1; col <= worksheet.Dimension.Columns; col++)
+                                {
+                                    dataRow[dataTable.Columns[col - 1].ColumnName] = worksheet.Cells[row, col].Text;
+                                }
+
+                                dataTable.Rows.Add(dataRow);
+                            }
+
+                            // Pass the DataTable to your data access method for insertion
+                            dataAccess.ImportAdherantsData(dataTable);
+
+                            // Refresh the data grid after import
+                            RefreshDataGrid();
+
+                            MessageBox.Show("Data imported successfully!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No worksheet found in the Excel file.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred during import: {ex.Message}");
+                }
+            }
         }
 
 
-        }
+
+
+
+    }
 }

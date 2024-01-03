@@ -172,6 +172,41 @@ namespace GestionBiblio.Models
             }
         }
 
+        public void ImportBooksData(DataTable dataTable)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            int id = Convert.ToInt32(row["ID"]);
+                            string title = row["Titre"].ToString();
+                            string author = row["Auteurs"].ToString();
+                            int anneePublication = Convert.ToInt32(row["AnneePublication"]);
+                            string genres = row["Genres"].ToString();
+                            string etat = row["Etat"].ToString();
+                            string state = row["State"].ToString();
+
+                            // Assuming your Livre class has a method to insert data into the database
+                            Livre livre = new Livre(id,title, author, anneePublication, genres, etat, state);
+                            livre.InsertIntoDatabase(connection, transaction); // Implement this method in your Livre class
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception($"Error importing data: {ex.Message}");
+                    }
+                }
+            }
+        }
 
         // Adherants.xaml.cs *******************************************************************************************************************
 
@@ -317,6 +352,185 @@ namespace GestionBiblio.Models
 
             return dataTable;
         }
+
+        public void ImportAdherantsData(DataTable dataTable)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            int id = Convert.ToInt32(row["Id"]);
+                            string nom = row["Nom"].ToString();
+                            string prenom = row["Prenom"].ToString();
+                            string email = row["email"].ToString();
+
+                            // Assuming your Livre class has a method to insert data into the database
+                            Adherant adherant = new Adherant(id, nom, prenom, email);
+                            adherant.InsertIntoDatabase(connection, transaction); // Implement this method in your Livre class
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception($"Error importing data: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        // Employes.xaml.cs *******************************************************************************************************************************************
+
+        public DataTable GetEmployesData()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Employee";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            return dataTable;
+        }
+
+        public void DeleteEmployes(List<Employe> EmployesToDelete)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    foreach (var Employe in EmployesToDelete)
+                    {
+
+                        string deleteQuery = $"DELETE FROM Employee WHERE Id = {Employe.id}";
+
+                        using (MySqlCommand cmd = new MySqlCommand(deleteQuery, connection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error deleting Employee: {ex.Message}");
+            }
+
+        }
+
+        public void SaveEmploye(Employe newEmploye)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string query = "INSERT INTO Employee (id, Nom, Prenom, email) " +
+                                    "VALUES (@Id, @Nom, @Prenom, @email)";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+
+                        command.Parameters.AddWithValue("@Id", newEmploye.id);
+                        command.Parameters.AddWithValue("@Nom", newEmploye.Nom);
+                        command.Parameters.AddWithValue("@Prenom", newEmploye.Prenom);
+                        command.Parameters.AddWithValue("@email", newEmploye.email);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        public void UpdateEmploye(Employe updatedEmploye)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+                    string updateQuery = @"UPDATE Employee
+                                           SET Nom = @Nom, 
+                                           Prenom = @Prenom,
+                                           email = @email
+                                           WHERE id = @id";
+
+
+                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@id", updatedEmploye.id);
+                        cmd.Parameters.AddWithValue("@Nom", updatedEmploye.Nom);
+                        cmd.Parameters.AddWithValue("@Prenom", updatedEmploye.Prenom);
+                        cmd.Parameters.AddWithValue("@email", updatedEmploye.email);
+
+
+
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error updating Employee: {ex.Message}");
+                Console.WriteLine(ex.Message.ToString());
+            }
+        }
+
+        public DataTable GetEmployeDataFind(string search)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = $"SELECT * FROM Employee WHERE id LIKE '%{search}%' OR Nom LIKE '%{search}%' OR Prenom LIKE '%{search}%' OR email LIKE '%{search}%'";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            return dataTable;
+        }
+
 
 
         // Auteurs.xaml.cs *********************************************************************************************************************************************************************

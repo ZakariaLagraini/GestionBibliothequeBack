@@ -7,9 +7,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:GestionBiblio"
- mc:Ignorable="d" d:DesignWidth="1100" Height="836" FontFamily="Poppins">
+ mc:Ignorable="d" d:DesignWidth="1100" Height="836" FontFamily="Poppins" >
 
-    <Grid>
+    <Grid Name="RenderPages">
         <Grid.Resources>
             <Style TargetType="materialDesign:PackIcon">
                 <Setter Property="Width" Value="30"></Setter>
@@ -19,9 +19,9 @@
         <Grid Grid.Column="0" Background="#F6F6F8" Margin="-10,0,10,0">
             <StackPanel Margin="10">
                 <Grid Height="60">
-                    <TextBlock Text="TABLEAU DE BORD " Foreground="Navy" FontWeight="Bold" HorizontalAlignment="Left" FontFamily="Arimo" Margin="10,10,10,20" FontSize="25" />
+                    <TextBlock Text="Dashboard " Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left"  Margin="10,10,10,20" FontSize="25" />
                 </Grid>
-                <WrapPanel HorizontalAlignment="Center" Width="755">
+                <WrapPanel HorizontalAlignment="Center" Width="951">
                     <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
                         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5"
                      BorderBrush="White" Width="141" Height="130" Background="#F6F6F8">
@@ -58,12 +58,24 @@
                                 <TextBlock x:Name="AdherentCountTextBlock" FontWeight="Bold" TextAlignment="Center" FontSize="25" Text="280K" Margin="0 10 0 0" />
                             </StackPanel>
                         </materialDesign:Card>
+
+                    </Border>
+                    <Border BorderBrush="White" BorderThickness="5" CornerRadius="15">
+                        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5" BorderBrush="White" Width="136" Height="130" Background="#F6F6F8">
+                            <StackPanel Margin="10">
+                                <materialDesign:PackIcon Kind="BookAccount" Foreground="#191970" />
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" FontSize="15" Text="Auteurs" Margin="0 5 0 0" />
+                                <TextBlock x:Name="AuteurCountTextBlock" FontWeight="Bold" TextAlignment="Center" FontSize="25" Text="280K" Margin="0 10 0 0" />
+                            </StackPanel>
+                        </materialDesign:Card>
+
                     </Border>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Center" Height="504" Width="871" Margin="30">
+                <WrapPanel HorizontalAlignment="Center" Height="278" Width="940" Margin="30">
+
                     <materialDesign:Card Margin="10" UniformCornerRadius="20" Padding="10" Height="257" Width="415">
                         <StackPanel Margin="0,0,21,-6">
-                            <TextBlock Text="Key Matrics" Margin="10 20" FontWeight="SemiBold" />
+                            <TextBlock Text="Reservation" Margin="10 10" FontSize="20" FontWeight="SemiBold" />
                             <Grid Height="150">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
@@ -75,34 +87,168 @@
                                     <RowDefinition />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="Clicks" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
-                                <TextBlock Text="Likes" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
-                                <TextBlock Text="Followers" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
-                                <TextBlock Text="Impressions" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
+                                <TextBlock Text="Thriller" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
+                                <TextBlock Text="Horror" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
+                                <TextBlock Text="Fairy" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
+                                <TextBlock Text="Science-Fiction" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
                                 <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                                    <TextBlock Text="10K" FontWeight="SemiBold" Margin="5 0" />
-                                    <ProgressBar Margin="5 0" Width="100" Height="8" Foreground="#FFFFFF13" Background="#FFE8E8E8" BorderBrush="#FFF3F349" Value="78" />
-                                    <TextBlock Text="12K" FontWeight="SemiBold" />
+                                    <TextBlock Text="0%" FontWeight="SemiBold" Margin="5 0" />
+                                    <ProgressBar Margin="5 0" Width="100" Height="8" Foreground="#00308F" Background="#FFE8E8E8" BorderBrush="#00308F" Value="50" />
+                                    <TextBlock Text="100%" FontWeight="SemiBold" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                                    <TextBlock Text="10K" FontWeight="SemiBold" Margin="5 0" />
-                                    <ProgressBar Margin="5 0" Width="100" Height="8" Foreground="#FFFFFF13" Background="#FFE8E8E8" BorderBrush="#FFF3F349" Value="78" />
-                                    <TextBlock Text="12K" FontWeight="SemiBold" />
+                                    <TextBlock Text="0%" FontWeight="SemiBold" Margin="5 0" />
+                                    <ProgressBar Margin="5 0" Width="100" Height="8" Foreground="#ADD8E6" Background="#FFE8E8E8" BorderBrush="#ADD8E6" Value="88" />
+                                    <TextBlock Text="100%" FontWeight="SemiBold" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                                    <TextBlock Text="10K" FontWeight="SemiBold" Margin="5 0" />
-                                    <ProgressBar Margin="5 0" Width="100" Height="8" Foreground="SeaGreen" Background="#FFE8E8E8" BorderBrush="SeaGreen" Value="78" />
-                                    <TextBlock Text="12K" FontWeight="SemiBold" />
+                                    <TextBlock Text="0%" FontWeight="SemiBold" Margin="5 0" />
+                                    <ProgressBar Margin="5 0" Width="100" Height="8" Foreground="#00308F" Background="#FFE8E8E8" BorderBrush="#00308F" Value="31" />
+                                    <TextBlock Text="100%" FontWeight="SemiBold" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                                    <TextBlock Text="10K" FontWeight="SemiBold" Margin="5 0" />
-                                    <ProgressBar Margin="5 0" Width="100" Height="8" Foreground="SeaGreen" Background="#FFE8E8E8" BorderBrush="SeaGreen" Value="78" />
-                                    <TextBlock Text="12K" FontWeight="SemiBold" />
+                                    <TextBlock Text="0%" FontWeight="SemiBold" Margin="5 0" />
+                                    <ProgressBar Margin="5 0" Width="100" Height="8" Foreground="#ADD8E6" Background="#FFE8E8E8" BorderBrush="#ADD8E6" Value="22" />
+                                    <TextBlock Text="100%" FontWeight="SemiBold" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+
+
+                    <materialDesign:Card UniformCornerRadius="20" Padding="10" Margin="30 0 0 0" Height="257" Width="450">
+                        <StackPanel Margin="0,0,21,-6">
+                            <TextBlock Text="Les Avis" FontSize="20" Margin="10 10" FontWeight="SemiBold" />
+                            <Grid Margin="0 10 0 0" Height="150">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Border CornerRadius="20" Height="30" Width="120" Grid.Column="0" Grid.Row="0" Background="LightBlue">
+                                    <TextBlock Text="Thriller" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
+                                </Border>
+                                <Border CornerRadius="20" Height="30" Width="120" Grid.Column="0" Grid.Row="1" Background="LightBlue">
+                                    <TextBlock Text="Horror" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
+                                </Border>
+                                <Border CornerRadius="20" Height="30" Width="120" Grid.Column="0" Grid.Row="2" Background="LightBlue">
+                                    <TextBlock Text="Fairy" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
+                                </Border>
+
+                                <Border CornerRadius="20" Height="30" Grid.Column="0" Grid.Row="3" Width="120" Background="LightBlue">
+                                    <TextBlock Text="Science-Fiction" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" />
+                                </Border>
+                                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Height="26" Width="156">
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="StarHalfFull" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="StarOutline" Foreground="#191970" Height="20" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="StarOutline" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="StarOutline" Foreground="#191970" Height="20" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="Star" Foreground="#191970" Height="20" />
+                                    <materialDesign:PackIcon Kind="StarHalfFull" Foreground="#191970" Height="20" />
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
                     </materialDesign:Card>
                 </WrapPanel>
+
+
+
+                <WrapPanel Height="244" Width="917">
+                    <StackPanel>
+                        <TextBlock Text="Savoir Plus a Propos :" Margin="10 10" FontSize="20" FontWeight="Bold" />
+
+                        <Grid Height="139" Width="895">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:ColorZone Mode="Custom" Padding="20 10" Grid.Column="0" Background="CornflowerBlue" Foreground="White" Height="81" CornerRadius="15" HorizontalAlignment="Center" VerticalAlignment="Center" Width="233">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="23*"/>
+                                        <ColumnDefinition Width="52*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Background="Transparent" BorderBrush="Transparent" Click="GoLivre">
+                                        <materialDesign:PackIcon Grid.Column="0" Kind="Bookshelf" Height="38" Width="30" Foreground="White" VerticalAlignment="Center"/>
+                                    </Button>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="31" Margin="0 7">
+                                        <TextBlock Text="Livres" FontSize="11" FontWeight="Regular"/>
+                                        <TextBlock Text="Decouvrer" FontSize="12" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Grid>
+
+                            </materialDesign:ColorZone>
+
+                            <materialDesign:ColorZone Mode="Custom" Padding="20 10" Grid.Column="1" Background="#ADD8E6" Foreground="White" Height="81" CornerRadius="15" HorizontalAlignment="Center" VerticalAlignment="Center" Width="233">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="23*"/>
+                                        <ColumnDefinition Width="52*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Background="Transparent" BorderBrush="Transparent" Click="GoAdherant">
+                                        <materialDesign:PackIcon Grid.Column="0" Kind="AccountBox" Height="38" Width="30" Foreground="White" VerticalAlignment="Center"/>
+                                    </Button>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="31" Margin="0 7">
+                                        <TextBlock Text="Adherants" FontSize="11" FontWeight="Regular"/>
+                                        <TextBlock Text="Decouvrer" FontSize="12" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Grid>
+
+                            </materialDesign:ColorZone>
+
+                            <materialDesign:ColorZone Mode="Custom" Padding="20 10" Grid.Column="2" Background="#00308F" Foreground="White" Height="81" CornerRadius="15" HorizontalAlignment="Center" VerticalAlignment="Center" Width="233">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="23*"/>
+                                        <ColumnDefinition Width="52*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Background="Transparent" BorderBrush="Transparent" Click="GoAuteur">
+                                        <materialDesign:PackIcon Grid.Column="0" Kind="BookAccount" Height="38" Width="30" Foreground="White" VerticalAlignment="Center"/>
+                                    </Button>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="31" Margin="0 7">
+                                        <TextBlock Text="Auteurs" FontSize="11" FontWeight="Regular"/>
+                                        <TextBlock Text="Decouvrer" FontSize="12" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Grid>
+
+                            </materialDesign:ColorZone>
+                            
+                        </Grid>
+                    </StackPanel>
+                </WrapPanel>
+
             </StackPanel>
         </Grid>
     </Grid>

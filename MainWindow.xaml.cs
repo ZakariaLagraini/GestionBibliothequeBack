@@ -69,7 +69,8 @@ namespace GestionBiblio
 
         private void Button_Employe(object sender, RoutedEventArgs e)
         {
-
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new Employes());
         }
 
         // *********************************************************

@@ -197,5 +197,30 @@ namespace GestionBiblio
 
             return count;
         }
+
+        private void GoLivre(object sender, RoutedEventArgs e)
+        {
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new Livres());
+        }
+
+        // *********************************************************
+
+        private void GoAdherant(object sender, RoutedEventArgs e)
+        {
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new Adherants());
+
+        }
+
+        // *********************************************************
+
+        private void GoAuteur(object sender, RoutedEventArgs e)
+        {
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new Auteurs());
+        }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,32 @@ namespace GestionBiblio.Models
             State = state;
         }
 
+        public void InsertIntoDatabase(MySqlConnection connection, MySqlTransaction transaction)
+        {
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO Livres (id, Titre, Auteurs, AnneePublication, Genres, Etat, State) VALUES (@id, @Titre, @Auteurs, @AnneePublication, @Genres, @Etat, @State)", connection, transaction))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@Titre", Titre);
+                    cmd.Parameters.AddWithValue("@Auteurs", Auteurs);
+                    cmd.Parameters.AddWithValue("@AnneePublication", AnneePublication);
+                    cmd.Parameters.AddWithValue("@Genres", Genres);
+                    cmd.Parameters.AddWithValue("@Etat", Etat);
+                    cmd.Parameters.AddWithValue("@State", State);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error inserting data into database: {ex.Message}");
+            }
+        }
+
     }
 
+   
 
+       
 }

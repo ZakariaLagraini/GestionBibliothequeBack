@@ -29,8 +29,10 @@
                         <Button Background="Transparent" Click="Find"/>
 
                     </WrapPanel>
-                    <Button Content="Export to Excel" Click="ExportToExcel_Click" Margin="60 0 0 0" Width="148" Height="30"/>
-
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Button Content="Import from Excel" Click="ImportFromExcel_Click" Margin="30 0 0 0" Width="154" Height="30"/>
+                        <Button Content="Export to Excel" Click="ExportToExcel_Click" Margin="60 0 0 0" Width="154" Height="30"/>
+                    </WrapPanel>
                     <DataGrid x:Name="dataGridAdherants" Margin="30 30" AutoGenerateColumns="true" Height="456" Width="865">
                         <DataGrid.Columns>
                             <!-- Add a template column with a radio button -->
