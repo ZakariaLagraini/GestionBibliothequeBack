@@ -275,5 +275,75 @@ namespace GestionBiblio
         }
 
 
+        private void ImportFromExcel_Click(object sender, RoutedEventArgs e)
+        {
+            ImportFromExcel();
+        }
+
+        private void ImportFromExcel()
+        {
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog
+            {
+                DefaultExt = ".xlsx",
+                Filter = "Excel Files (*.xlsx)|*.xlsx|All files (*.*)|*.*"
+            };
+
+            bool? result = openFileDialog.ShowDialog();
+
+            if (result == true)
+            {
+                try
+                {
+                    FileInfo file = new FileInfo(openFileDialog.FileName);
+
+                    using (ExcelPackage package = new ExcelPackage(file))
+                    {
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
+
+                        if (worksheet != null)
+                        {
+                            DataTable dataTable = new DataTable();
+
+                            // Assuming the first row in the Excel file contains column headers
+                            for (int i = 1; i <= worksheet.Dimension.Columns; i++)
+                            {
+                                string columnName = worksheet.Cells[1, i].Text;
+                                dataTable.Columns.Add(columnName);
+                            }
+
+                            // Start reading data from the second row
+                            for (int row = 2; row <= worksheet.Dimension.Rows; row++)
+                            {
+                                DataRow dataRow = dataTable.NewRow();
+
+                                for (int col = 1; col <= worksheet.Dimension.Columns; col++)
+                                {
+                                    dataRow[dataTable.Columns[col - 1].ColumnName] = worksheet.Cells[row, col].Text;
+                                }
+
+                                dataTable.Rows.Add(dataRow);
+                            }
+
+                            // Pass the DataTable to your data access method for insertion
+                            dataAccess.ImportAuteursData(dataTable);
+
+                            // Refresh the data grid after import
+                            RefreshDataGrid();
+
+                            MessageBox.Show("Data imported successfully!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No worksheet found in the Excel file.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred during import: {ex.Message}");
+                }
+            }
+        }
+
     }
 }
