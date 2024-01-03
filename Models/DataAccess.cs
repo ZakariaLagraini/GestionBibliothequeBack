@@ -531,6 +531,38 @@ namespace GestionBiblio.Models
             return dataTable;
         }
 
+        public void ImportEmployesData(DataTable dataTable)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            int id = Convert.ToInt32(row["Id"]);
+                            string nom = row["Nom"].ToString();
+                            string prenom = row["Prenom"].ToString();
+                            string email = row["email"].ToString();
+
+                            
+                            Employe employe = new Employe(id, nom, prenom, email);
+                            employe.InsertIntoDatabase(connection, transaction); // Implement this method in your Livre class
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception($"Error importing data: {ex.Message}");
+                    }
+                }
+            }
+        }
 
 
         // Auteurs.xaml.cs *********************************************************************************************************************************************************************
