@@ -33,6 +33,8 @@ namespace GestionBiblio
             UpdateLivresCount();
             UpdateLivresResCount();
             UpdateEmployeCount();
+            UpdateAuteurCount();
+
         }
 
         private void UpdateAdherentCount()
@@ -204,6 +206,45 @@ namespace GestionBiblio
             RenderPages.Children.Add(new Livres());
         }
 
+        private void UpdateAuteurCount()
+        {
+            int auteurCount = GetAuteurCount();
+            AuteurCountTextBlock.Text = auteurCount.ToString();
+        }
+
+        private int GetAuteurCount()
+        {
+            int count = 0;
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string query = "SELECT COUNT(*) FROM auteurs";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int parsedCount))
+                        {
+                            count = parsedCount;
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return count;
+        }
         // *********************************************************
 
         private void GoAdherant(object sender, RoutedEventArgs e)
