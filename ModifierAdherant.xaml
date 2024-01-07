@@ -92,6 +92,26 @@
          Margin="0,5,0,0"
          Padding="30,0,0,0" />
 
+            <TextBlock Text="Password"
+  Foreground="DarkGray"
+  FontSize="12"
+  FontWeight="Medium"
+  FontFamily="Montserrat"                             
+  Margin="0,10,0,0"/>
+
+            <TextBox Name="Password"
+FontSize="13"
+FontWeight="Medium"
+FontFamily="Montserrat"                            
+Foreground="Black"
+CaretBrush="LightGray"
+BorderBrush="DarkGray"
+BorderThickness="0,0,0,2"
+Height="28"
+VerticalContentAlignment="Center"
+Margin="0,5,0,0"
+Padding="30,0,0,0" />
+
             <Button Content="Enregistrer" Click="EnregistrerModButton_Click" Margin="0,25,0,0"/>
         </StackPanel>
     </Grid>

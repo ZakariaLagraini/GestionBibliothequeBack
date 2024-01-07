@@ -58,6 +58,14 @@ namespace GestionBiblio
 
         // *********************************************************
 
+        private void Button_LivresRes(object sender, RoutedEventArgs e)
+        {
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new LivresRes());
+        }
+
+        // *********************************************************
+
         private void Button_Adherants(object sender, RoutedEventArgs e)
         {
             RenderPages.Children.Clear();

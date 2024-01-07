@@ -40,17 +40,23 @@ namespace GestionBiblio
 
                 string titre = Titre.Text;
                 string auteurs = Auteurs.Text;
-                if (!int.TryParse(Annee_pub.Text, out int anneePublication))
+                string description = Description.Text;
+                string genres = Genres.Text;
+                string cheminImage = CheminImage.Text;
+                string etat = Etat.Text;
+                string state = State.Text;
+                if (!DateTime.TryParse(DateReservation.Text, out DateTime dateReservation))
                 {
-                    MessageBox.Show("Invalid Year of Publication. Please enter a valid integer.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Invalid Date. Please enter a valid Date.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if (!DateTime.TryParse(DateExpiration.Text, out DateTime dateExpiration))
+                {
+                    MessageBox.Show("Invalid Date. Please enter a valid Date.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                string genres = Genres.Text;
-                string etat = Etat.Text;
-                string state = State.Text;
-
-                Livre newBook = new Livre(id, titre, auteurs, anneePublication, genres, etat, state);
+                Livre newBook = new Livre(id, titre, auteurs, description, genres, cheminImage, etat, state, dateReservation, dateExpiration);
 
                 dataAccess.SaveBook(newBook); 
 

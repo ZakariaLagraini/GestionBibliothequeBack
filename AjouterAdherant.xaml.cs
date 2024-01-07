@@ -41,9 +41,10 @@ namespace GestionBiblio
                 string nom = Nom.Text;
                 string prenom = Prenom.Text;
                 string Email = email.Text;
+                string password = Password.Text;
                 
 
-                Adherant newAdherant = new Adherant(id, nom, prenom, Email);
+                Adherant newAdherant = new Adherant(id, nom, prenom, Email, password);
 
                 dataAccess.SaveAdherant(newAdherant); 
 

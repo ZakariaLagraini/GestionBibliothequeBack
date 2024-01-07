@@ -46,10 +46,13 @@ namespace GestionBiblio
             Id.Text = Livre.id.ToString();
             Titre.Text = Livre.Titre;
             Auteurs.Text = Livre.Auteurs;
-            Annee_pub.Text = Livre.AnneePublication.ToString();
+            Description.Text = Livre.Description.ToString();
             Genres.Text = Livre.Genres;
+            CheminImage.Text = Livre.CheminImage;
             Etat.Text = Livre.Etat;
             State.Text = Livre.State;
+            DateReservation.Text = Livre.DateReservation.ToString();
+            DateExpiration.Text = Livre.DateExpiration.ToString();
         }
 
         private void EnregistrerModButton_Click(object sender, RoutedEventArgs e)
@@ -61,10 +64,13 @@ namespace GestionBiblio
             id: Convert.ToInt32(Id.Text),
             titre: Titre.Text,
             auteurs: Auteurs.Text,
-            anneePublication: Convert.ToInt32(Annee_pub.Text),
+            description: Description.Text,
             genres: Genres.Text,
+            cheminImage: CheminImage.Text,
             etat: Etat.Text,
-            state: State.Text
+            state: State.Text,
+            dateReservation: Convert.ToDateTime(DateReservation.Text),
+            dateExpiration: Convert.ToDateTime(DateExpiration.Text)
         );
 
 

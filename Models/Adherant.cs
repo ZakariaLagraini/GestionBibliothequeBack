@@ -16,13 +16,15 @@ namespace GestionBiblio.Models
         public string Prenom { get; set; }
         public string email { get; set; }
 
+        public string password { get; set; }
 
-        public Adherant(int id, string nom, string prenom, string email)
+        public Adherant(int id, string nom, string prenom, string email, string password)
         {
             this.id = id;
             Nom = nom;
             Prenom = prenom;
             this.email = email;
+            this.password = password;
         }
 
         public void InsertIntoDatabase(MySqlConnection connection, MySqlTransaction transaction)
@@ -30,8 +32,8 @@ namespace GestionBiblio.Models
             try
             {
                 
-                    string query = "INSERT INTO adherants (id, Nom, Prenom, email) " +
-                    "VALUES (@Id, @Nom, @Prenom, @email)";
+                    string query = "INSERT INTO adherants (id, Nom, Prenom, email, Password) " +
+                    "VALUES (@Id, @Nom, @Prenom, @email, @Password)";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection,transaction))
                 {
@@ -40,6 +42,7 @@ namespace GestionBiblio.Models
                     command.Parameters.AddWithValue("@Nom", Nom);
                     command.Parameters.AddWithValue("@Prenom", Prenom);
                     command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@Password", password);
 
                     command.ExecuteNonQuery();
                 }

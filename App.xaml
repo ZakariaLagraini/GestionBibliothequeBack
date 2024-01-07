@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GestionBiblio"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-             StartupUri="MainWindow.xaml">
+             StartupUri="LoginScreen.xaml">
     <Application.Resources>
         <ResourceDictionary>
             

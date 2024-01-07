@@ -1,0 +1,120 @@
+﻿<Window x:Class="GestionBiblio.ModifierLivresRes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionBiblio"
+        mc:Ignorable="d"
+        Height="574" Width="330">
+    <Grid Margin="0,0,10,0">
+        <StackPanel  Width="220"
+                     Grid.Row="1"
+                     Orientation="Vertical"
+                     Margin="0,0,0,0">
+
+            <TextBlock Text="ID"
+   Foreground="DarkGray"
+   FontSize="12"
+   FontWeight="Medium"
+   FontFamily="Montserrat"                             
+   Margin="0,10,0,0"/>
+
+            <TextBox Name="Id"
+ FontSize="13"
+ FontWeight="Medium"
+ FontFamily="Montserrat"                            
+ Foreground="Black"
+ CaretBrush="LightGray"
+ BorderBrush="DarkGray"
+ BorderThickness="0,0,0,2"
+ Height="28"
+ VerticalContentAlignment="Center"
+ Margin="0,5,0,0"
+ Padding="30,0,0,0" />
+
+            <TextBlock Text="LivreId"
+   Foreground="DarkGray"
+   FontSize="12"
+   FontWeight="Medium"
+   FontFamily="Montserrat"                             
+   Margin="0,10,0,0"/>
+
+            <TextBox Name="LivreId"
+ FontSize="13"
+ FontWeight="Medium"
+ FontFamily="Montserrat"                            
+ Foreground="Black"
+ CaretBrush="LightGray"
+ BorderBrush="DarkGray"
+ BorderThickness="0,0,0,2"
+ Height="28"
+ VerticalContentAlignment="Center"
+ Margin="0,5,0,0"
+ Padding="30,0,0,0" />
+
+
+
+            <TextBlock Text="DateReservation"
+  Foreground="DarkGray"
+  FontSize="12"
+  FontWeight="Medium"
+  FontFamily="Montserrat"                             
+  Margin="0,5,0,0"/>
+
+            <xctk:DateTimePicker x:Name="DateReservation"
+FontSize="13"
+FontWeight="Medium"
+FontFamily="Montserrat"                            
+Foreground="Black"
+BorderBrush="DarkGray"
+BorderThickness="0,0,0,2"
+Height="28"
+VerticalContentAlignment="Center"
+Margin="0,5,0,0"
+Padding="30,0,0,0" />
+
+            <TextBlock Text="DateExpiration"
+  Foreground="DarkGray"
+  FontSize="12"
+  FontWeight="Medium"
+  FontFamily="Montserrat"                             
+  Margin="0,5,0,0"/>
+
+            <xctk:DateTimePicker Name="DateExpiration"
+FontSize="13"
+FontWeight="Medium"
+FontFamily="Montserrat"                            
+Foreground="Black"
+BorderBrush="DarkGray"
+BorderThickness="0,0,0,2"
+Height="28"
+VerticalContentAlignment="Center"
+Margin="0,5,0,0"
+Padding="30,0,0,0" />
+
+            <TextBlock Text="AdherantsId"
+  Foreground="DarkGray"
+  FontSize="12"
+  FontWeight="Medium"
+  FontFamily="Montserrat"                             
+  Margin="0,10,0,0"/>
+
+            <TextBox Name="AdherantsId"
+    FontSize="13"
+    FontWeight="Medium"
+    FontFamily="Montserrat"                            
+    Foreground="Black"
+    CaretBrush="LightGray"
+    BorderBrush="DarkGray"
+    BorderThickness="0,0,0,2"
+    Height="28"
+    VerticalContentAlignment="Center"
+    Margin="0,5,0,0"
+    Padding="30,0,0,0" />
+
+
+            <Button Content="Enregistrer" Click="EnregistrerModButton_Click" Margin="0,30,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

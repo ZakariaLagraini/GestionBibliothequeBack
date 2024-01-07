@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:GestionBiblio"
         mc:Ignorable="d"
-        Height="771" Width="1200" WindowStartupLocation="CenterScreen"
+        Height="800" Width="1200" WindowStartupLocation="CenterScreen"
         WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="True" Loaded="Window_Loaded" >
     <Grid>
         <materialDesign:Card Margin="10" UniformCornerRadius="15">
@@ -39,7 +39,15 @@
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
-                        <ListViewItem HorizontalAlignment="Center" Margin="0 10">
+                        <ListViewItem Margin="0" Height="89">
+                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
+                                BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_LivresRes">
+                                <StackPanel Margin="5">
+                                    <materialDesign:PackIcon Kind="BookAdd"/>
+                                </StackPanel>
+                            </Button>
+                        </ListViewItem>
+                        <ListViewItem Margin="0 10" Height="78">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
                              BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" Click="Button_Adherants">
                                 <StackPanel Margin="-5">

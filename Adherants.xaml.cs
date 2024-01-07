@@ -94,8 +94,9 @@ namespace GestionBiblio
                            string nom = row["Nom"].ToString();
                            string prenom = row["Prenom"].ToString();
                            string email = row["email"].ToString();
+                           string password = row["password"].ToString();
                            
-                           AdherantsToDelete.Add(new Adherant(id, nom, prenom, email));
+                           AdherantsToDelete.Add(new Adherant(id, nom, prenom, email,password));
                        }
                    }
 
@@ -135,7 +136,8 @@ namespace GestionBiblio
                         id: Id,
                         nom: rowView["Nom"].ToString(),
                         prenom: rowView["Prenom"].ToString(),
-                        email: rowView["email"].ToString()
+                        email: rowView["email"].ToString(),
+                        password: rowView["Password"].ToString()
                         
                        );
 

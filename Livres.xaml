@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionBiblio"
         mc:Ignorable="d"
-        Height="650" Width="1200">
+        Height="650" Width="1100">
     <Grid>
         <WrapPanel HorizontalAlignment="Center" Height="650" Width="1150" Margin="0,3,0,3" RenderTransformOrigin="0.5,0.5">
             <WrapPanel.RenderTransform>

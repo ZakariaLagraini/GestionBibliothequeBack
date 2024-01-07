@@ -475,3 +475,9 @@ C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierEmploye.g.cs
 C:\Users\PC\Desktop\GestionBib\obj\Debug\AjouterEmploye.baml
 C:\Users\PC\Desktop\GestionBib\obj\Debug\Employes.baml
 C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierEmploye.baml
+C:\Users\PC\Desktop\GestionBib\obj\Debug\AjouterLivresRes.g.cs
+C:\Users\PC\Desktop\GestionBib\obj\Debug\LivresRes.g.cs
+C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierLivresRes.g.cs
+C:\Users\PC\Desktop\GestionBib\obj\Debug\AjouterLivresRes.baml
+C:\Users\PC\Desktop\GestionBib\obj\Debug\LivresRes.baml
+C:\Users\PC\Desktop\GestionBib\obj\Debug\ModifierLivresRes.baml

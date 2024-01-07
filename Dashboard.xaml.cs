@@ -97,7 +97,7 @@ namespace GestionBiblio
                     connection.Open();
 
 
-                    string query = "SELECT COUNT(*) FROM livres where State=1";
+                    string query = "SELECT COUNT(*) FROM livre where State=1";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -137,7 +137,7 @@ namespace GestionBiblio
                     connection.Open();
 
 
-                    string query = "SELECT COUNT(*) FROM livres";
+                    string query = "SELECT COUNT(*) FROM employee";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -177,7 +177,7 @@ namespace GestionBiblio
                     connection.Open();
 
 
-                    string query = "SELECT COUNT(*) FROM livres where State=0";
+                    string query = "SELECT COUNT(*) FROM livre where State=0";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {

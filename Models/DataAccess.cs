@@ -30,7 +30,7 @@ namespace GestionBiblio.Models
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM livres";
+                    string query = "SELECT * FROM produits";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                     adapter.Fill(dataTable);
@@ -53,7 +53,7 @@ namespace GestionBiblio.Models
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM livres";
+                    string query = "SELECT * FROM produits";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                     adapter.Fill(dataTable);
@@ -76,19 +76,22 @@ namespace GestionBiblio.Models
                     connection.Open();
 
                     
-                    string query = "INSERT INTO livres (id, Titre, Auteurs, AnneePublication, Genres, Etat, State) " +
-                                    "VALUES (@Id, @Titre, @Auteurs, @AnneePublication, @Genres, @Etat, @State)";
+                    string query = "INSERT INTO produits (id, Nom, Auteurs, Description, Genre, CheminImage, Etat, State, DateReservation, DateExpiration) " +
+                                    "VALUES (@Id, @Titre, @Auteurs, @Description, @Genres, @CheminImage, @Etat, @State, @DateReservation, @DateExpiration)";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        
+
                         command.Parameters.AddWithValue("@Id", newBook.id);
                         command.Parameters.AddWithValue("@Titre", newBook.Titre);
                         command.Parameters.AddWithValue("@Auteurs", newBook.Auteurs);
-                        command.Parameters.AddWithValue("@AnneePublication", newBook.AnneePublication);
+                        command.Parameters.AddWithValue("@Description", newBook.Description);
                         command.Parameters.AddWithValue("@Genres", newBook.Genres);
+                        command.Parameters.AddWithValue("@CheminImage", newBook.CheminImage);
                         command.Parameters.AddWithValue("@Etat", newBook.Etat);
                         command.Parameters.AddWithValue("@State", newBook.State);
+                        command.Parameters.AddWithValue("@DateReservation", newBook.DateReservation);
+                        command.Parameters.AddWithValue("@DateExpiration", newBook.DateExpiration);
 
                         command.ExecuteNonQuery();
                     }
@@ -111,7 +114,7 @@ namespace GestionBiblio.Models
                     foreach (var livre in booksToDelete)
                     {
                         
-                        string deleteQuery = $"DELETE FROM livres WHERE Id = {livre.id}";
+                        string deleteQuery = $"DELETE FROM produits WHERE Id = {livre.id}";
 
                         using (MySqlCommand cmd = new MySqlCommand(deleteQuery, connection))
                         {
@@ -137,13 +140,16 @@ namespace GestionBiblio.Models
                     connection.Open();
 
                     
-                    string updateQuery = @"UPDATE livres 
-                                       SET Titre = @Titre, 
+                    string updateQuery = @"UPDATE produits 
+                                       SET Nom = @Nom, 
                                            Auteurs = @Auteurs,
-                                           AnneePublication = @AnneePublication,
-                                           Genres = @Genres,
+                                           Description = @Description,
+                                           Genre = @Genre,
+                                           CheminImage = @CheminImage,
                                            Etat = @Etat,
-                                           State = @State
+                                           State = @State,
+                                           DateReservation = @DateReservation,
+                                           DateExpiration = @DateExpiration
                                            WHERE id = @id";
                                            
 
@@ -151,14 +157,17 @@ namespace GestionBiblio.Models
                     {
                      
                         cmd.Parameters.AddWithValue("@Id", updatedBook.id);
-                        cmd.Parameters.AddWithValue("@Titre", updatedBook.Titre);
+                        cmd.Parameters.AddWithValue("@Nom", updatedBook.Titre);
                         cmd.Parameters.AddWithValue("@Auteurs", updatedBook.Auteurs);
-                        cmd.Parameters.AddWithValue("@AnneePublication", updatedBook.AnneePublication);
-                        cmd.Parameters.AddWithValue("@Genres", updatedBook.Genres);
+                        cmd.Parameters.AddWithValue("@Description", updatedBook.Description);
+                        cmd.Parameters.AddWithValue("@Genre", updatedBook.Genres);
+                        cmd.Parameters.AddWithValue("@CheminImage", updatedBook.CheminImage);
                         cmd.Parameters.AddWithValue("@Etat", updatedBook.Etat);
                         cmd.Parameters.AddWithValue("@State", updatedBook.State);
+                        cmd.Parameters.AddWithValue("@DateReservation", updatedBook.DateReservation);
+                        cmd.Parameters.AddWithValue("@DateExpiration", updatedBook.DateExpiration);
 
-                        
+
                         cmd.ExecuteNonQuery();
                         Console.WriteLine(updatedBook.Genres.ToString());
                     }
@@ -167,7 +176,7 @@ namespace GestionBiblio.Models
             catch (Exception ex)
             {
                 
-                MessageBox.Show($"Error updating book: {ex.Message}");
+                
                 Console.WriteLine(ex.Message.ToString());
             }
         }
@@ -184,16 +193,19 @@ namespace GestionBiblio.Models
                     {
                         foreach (DataRow row in dataTable.Rows)
                         {
-                            int id = Convert.ToInt32(row["ID"]);
-                            string title = row["Titre"].ToString();
+                            int id = Convert.ToInt32(row["Id"]);
+                            string title = row["Nom"].ToString();
                             string author = row["Auteurs"].ToString();
-                            int anneePublication = Convert.ToInt32(row["AnneePublication"]);
-                            string genres = row["Genres"].ToString();
+                            string description = row["Description"].ToString();
+                            string genres = row["Genre"].ToString();
+                            string cheminImage = row["CheminImage"].ToString();
                             string etat = row["Etat"].ToString();
                             string state = row["State"].ToString();
+                            DateTime dateReservation = Convert.ToDateTime(row["DateReservation"]);
+                            DateTime dateExpiration = Convert.ToDateTime(row["DateExpiration"]);
 
                             // Assuming your Livre class has a method to insert data into the database
-                            Livre livre = new Livre(id,title, author, anneePublication, genres, etat, state);
+                            Livre livre = new Livre(id,title, author, description, genres, cheminImage, etat, state, dateReservation, dateExpiration);
                             livre.InsertIntoDatabase(connection, transaction); // Implement this method in your Livre class
                         }
 
@@ -208,6 +220,193 @@ namespace GestionBiblio.Models
             }
         }
 
+
+
+        // LivresRes.xaml.cs **********************************************************************************************************************
+
+        public DataTable GetLivresResData()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM livrereserve";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            return dataTable;
+        }
+
+        public void DeleteLivresRes(List<LivresRe> LivresResToDelete)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    foreach (var LivresRe in LivresResToDelete)
+                    {
+
+                        string deleteQuery = $"DELETE FROM livrereserve WHERE Id = {LivresRe.id}";
+
+                        using (MySqlCommand cmd = new MySqlCommand(deleteQuery, connection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error deleting LivresRes: {ex.Message}");
+            }
+
+        }
+
+        public void SaveLivresRe(LivresRe newLivresRe)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string query = "INSERT INTO livrereserve (id, id_produit, DateReservation, DateExpiration, id_user) " +
+                                    "VALUES (@Id, @LivreId, @DateReservation, @DateExpiration, @AdherantsId)";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+
+                        command.Parameters.AddWithValue("@id", newLivresRe.id);
+                        command.Parameters.AddWithValue("@LivreId", newLivresRe.LivreId);
+                        command.Parameters.AddWithValue("@DateReservation", newLivresRe.DateReservation);
+                        command.Parameters.AddWithValue("@DateExpiration", newLivresRe.DateExpiration);
+                        command.Parameters.AddWithValue("@AdherantsId", newLivresRe.AdherantsId);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        public void UpdateLivresRe(LivresRe updatedLivresRe)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+                    string updateQuery = @"UPDATE livrereserve 
+                                           SET id_produit = @LivreId, 
+                                           DateReservation = @DateReservation,
+                                           DateExpiration = @DateExpiration,
+                                           id_user = @AdherantsId
+                                           WHERE id = @id";
+
+
+                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, connection))
+                    {
+
+                        cmd.Parameters.AddWithValue("@id", updatedLivresRe.id);
+                        cmd.Parameters.AddWithValue("@LivreId", updatedLivresRe.LivreId);
+                        cmd.Parameters.AddWithValue("@DateReservation", updatedLivresRe.DateReservation);
+                        cmd.Parameters.AddWithValue("@DateExpiration", updatedLivresRe.DateExpiration);
+                        cmd.Parameters.AddWithValue("@AdherantsId", updatedLivresRe.AdherantsId);
+
+
+
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error updating LivresRes: {ex.Message}");
+                Console.WriteLine(ex.Message.ToString());
+            }
+        }
+
+        public DataTable GetLivresResDataFind(string search)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = $"SELECT * FROM Livrereserve WHERE id LIKE '%{search}%' OR id_produit LIKE '%{search}%' OR DateReservation LIKE '%{search}%' OR DateExpiration LIKE '%{search}%'";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            return dataTable;
+        }
+
+        public void ImportLivresResData(DataTable dataTable)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            int id = Convert.ToInt32(row["Id"]);
+                            int livreId = Convert.ToInt32(row["id_produit"]);
+                            DateTime dateReservation = Convert.ToDateTime(row["DateReservation"]);
+                            DateTime dateExpiration = Convert.ToDateTime(row["DateExpiration"]);
+                            int adherantsId = Convert.ToInt32(row["id_user"]);
+
+
+
+                            // Assuming your Livre class has a method to insert data into the database
+                            LivresRe LivresRe = new LivresRe(id, livreId, dateReservation, dateExpiration, adherantsId);
+                            LivresRe.InsertIntoDatabase(connection, transaction); // Implement this method in your Livre class
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception($"Error importing data: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+
         // Adherants.xaml.cs *******************************************************************************************************************
 
         public DataTable GetAdherantsData()
@@ -219,7 +418,7 @@ namespace GestionBiblio.Models
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM adherants";
+                    string query = "SELECT * FROM user";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                     adapter.Fill(dataTable);
@@ -244,7 +443,7 @@ namespace GestionBiblio.Models
                     foreach (var adherant in AdherantsToDelete)
                     {
 
-                        string deleteQuery = $"DELETE FROM adherants WHERE Id = {adherant.id}";
+                        string deleteQuery = $"DELETE FROM user WHERE Id = {adherant.id}";
 
                         using (MySqlCommand cmd = new MySqlCommand(deleteQuery, connection))
                         {
@@ -270,8 +469,8 @@ namespace GestionBiblio.Models
                     connection.Open();
 
 
-                    string query = "INSERT INTO adherants (id, Nom, Prenom, email) " +
-                                    "VALUES (@Id, @Nom, @Prenom, @email)";
+                    string query = "INSERT INTO user (id, Nom, Prenom, email, Password) " +
+                                    "VALUES (@Id, @Nom, @Prenom, @email, @Password)";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -280,6 +479,7 @@ namespace GestionBiblio.Models
                         command.Parameters.AddWithValue("@Nom", newAdherant.Nom);
                         command.Parameters.AddWithValue("@Prenom", newAdherant.Prenom);
                         command.Parameters.AddWithValue("@email", newAdherant.email);
+                        command.Parameters.AddWithValue("@Password", newAdherant.password);
                        
                         command.ExecuteNonQuery();
                     }
@@ -300,10 +500,11 @@ namespace GestionBiblio.Models
                     connection.Open();
 
 
-                    string updateQuery = @"UPDATE adherants 
+                    string updateQuery = @"UPDATE user 
                                            SET Nom = @Nom, 
                                            Prenom = @Prenom,
-                                           email = @email
+                                           email = @email,
+                                           Password = @Password
                                            WHERE id = @id";
 
 
@@ -314,7 +515,8 @@ namespace GestionBiblio.Models
                         cmd.Parameters.AddWithValue("@Nom", updatedAdherant.Nom);
                         cmd.Parameters.AddWithValue("@Prenom", updatedAdherant.Prenom);
                         cmd.Parameters.AddWithValue("@email", updatedAdherant.email);
-                       
+                        cmd.Parameters.AddWithValue("@Password", updatedAdherant.password);
+
 
 
                         cmd.ExecuteNonQuery();
@@ -339,7 +541,7 @@ namespace GestionBiblio.Models
                 try
                 {
                     connection.Open();
-                    string query = $"SELECT * FROM adherants WHERE id LIKE '%{search}%' OR Nom LIKE '%{search}%' OR Prenom LIKE '%{search}%' OR email LIKE '%{search}%'";
+                    string query = $"SELECT * FROM user WHERE id LIKE '%{search}%' OR Nom LIKE '%{search}%' OR Prenom LIKE '%{search}%' OR email LIKE '%{search}%'";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                     adapter.Fill(dataTable);
@@ -369,9 +571,10 @@ namespace GestionBiblio.Models
                             string nom = row["Nom"].ToString();
                             string prenom = row["Prenom"].ToString();
                             string email = row["email"].ToString();
+                            string password = row["Password"].ToString();
 
                             // Assuming your Livre class has a method to insert data into the database
-                            Adherant adherant = new Adherant(id, nom, prenom, email);
+                            Adherant adherant = new Adherant(id, nom, prenom, email, password);
                             adherant.InsertIntoDatabase(connection, transaction); // Implement this method in your Livre class
                         }
 

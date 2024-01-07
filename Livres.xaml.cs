@@ -73,14 +73,17 @@ namespace GestionBiblio
                     {
                         
                         int id = Convert.ToInt32(row["Id"]);
-                        string title = row["Titre"].ToString();
+                        string title = row["Nom"].ToString();
                         string author = row["Auteurs"].ToString();
-                        int annee_pub = Convert.ToInt32(row["AnneePublication"]);
-                        string genres = row["Genres"].ToString();
+                        string description = row["Description"].ToString();
+                        string genres = row["Genre"].ToString();
+                        string cheminImages = row["CheminImage"].ToString();
                         string etat = row["Etat"].ToString();
                         string state = row["State"].ToString();
+                        DateTime dateReservation = Convert.ToDateTime(row["DateReservation"]);
+                        DateTime dateExpiration = Convert.ToDateTime(row["DateExpiration"]);
 
-                        booksToDelete.Add(new Livre(id, title, author, annee_pub, genres, etat, state));
+                        booksToDelete.Add(new Livre(id, title, author, description, genres, cheminImages, etat, state, dateReservation, dateExpiration));
                     }
                 }
 
@@ -115,14 +118,17 @@ namespace GestionBiblio
                     int Id = Convert.ToInt32(rowView["Id"]);
 
                     
-                    Livre selectedBook = new Livre(
+                     Livre selectedBook = new Livre(
                      id: Id,
-                     titre: rowView["Titre"].ToString(),
+                     titre: rowView["Nom"].ToString(),
                      auteurs: rowView["Auteurs"].ToString(),
-                     anneePublication: Convert.ToInt32(rowView["AnneePublication"]),
-                     genres: rowView["Genres"].ToString(),
+                     description: rowView["Description"].ToString(),
+                     genres: rowView["Genre"].ToString(),
+                     cheminImage: rowView["CheminImage"].ToString(),
                      etat: rowView["Etat"].ToString(),
-                     state: rowView["State"].ToString()
+                     state: rowView["State"].ToString(),
+                     dateReservation: Convert.ToDateTime(rowView["DateReservation"]),
+                     dateExpiration: Convert.ToDateTime(rowView["DateExpiration"])
                     );
                    
 

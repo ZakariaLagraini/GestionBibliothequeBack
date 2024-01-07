@@ -229,6 +229,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AjouterLivresRes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Auteurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -242,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Livres.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LivresRes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -268,6 +276,9 @@
     <Compile Include="AjouterLivre.xaml.cs">
       <DependentUpon>AjouterLivre.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AjouterLivresRes.xaml.cs">
+      <DependentUpon>AjouterLivresRes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -283,6 +294,9 @@
     </Compile>
     <Compile Include="Livres.xaml.cs">
       <DependentUpon>Livres.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LivresRes.xaml.cs">
+      <DependentUpon>LivresRes.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
@@ -307,6 +321,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ModifierLivresRes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Adherant.cs" />
@@ -314,6 +332,7 @@
     <Compile Include="Models\DataAccess.cs" />
     <Compile Include="Models\Employe.cs" />
     <Compile Include="Models\Livre.cs" />
+    <Compile Include="Models\LivresRe.cs" />
     <Compile Include="ModifierAdherant.xaml.cs">
       <DependentUpon>ModifierAdherant.xaml</DependentUpon>
     </Compile>
@@ -325,6 +344,9 @@
     </Compile>
     <Compile Include="ModifierLivre.xaml.cs">
       <DependentUpon>ModifierLivre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModifierLivresRes.xaml.cs">
+      <DependentUpon>ModifierLivresRes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -47,6 +47,7 @@ namespace GestionBiblio
             Nom.Text = Adherant.Nom.ToString();
             Prenom.Text = Adherant.Prenom.ToString();
             email.Text = Adherant.email.ToString();
+            Password.Text = Adherant.password.ToString();
             
         }
 
@@ -59,7 +60,8 @@ namespace GestionBiblio
             id: Convert.ToInt32(Id.Text),
             nom: Nom.Text,
             prenom: Prenom.Text,
-            email: email.Text
+            email: email.Text,
+            password: Password.Text
            
         );
 

@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionBiblio"
         mc:Ignorable="d"
-        Height="650" Width="1200">
+        Height="650" Width="1100">
     <Grid>
         <WrapPanel HorizontalAlignment="Center" Height="650" Width="1150" Margin="0,3,0,3" RenderTransformOrigin="0.5,0.5">
             <WrapPanel.RenderTransform>
@@ -33,7 +33,7 @@
                         <Button Content="Import from Excel" Click="ImportFromExcel_Click" Margin="30 0 0 0" Width="154" Height="30"/>
                         <Button Content="Export to Excel" Click="ExportToExcel_Click" Margin="60 0 0 0" Width="154" Height="30"/>
                     </WrapPanel>
-                    <DataGrid x:Name="dataGridAdherants" Margin="30 30" AutoGenerateColumns="true" Height="456" Width="865">
+                    <DataGrid x:Name="dataGridAdherants" Margin="30 30" AutoGenerateColumns="true" Height="309" Width="692">
                         <DataGrid.Columns>
                             <!-- Add a template column with a radio button -->
                             <DataGridTemplateColumn Header="Select">
